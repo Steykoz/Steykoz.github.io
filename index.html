@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stey — Développeur Web & Digital Freelance</title>
+    <meta name="description" content="Développeur web freelance. Sites web, scripts FiveM, automatisations, SEO. Solutions digitales sur mesure, rapides et professionnelles.">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='4' y='26' font-family='Arial' font-weight='bold' font-size='26' fill='url(%23g)'%3ES%3C/text%3E%3Ccircle cx='26' cy='24' r='3' fill='%23fb923c'/%3E%3C/svg%3E">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Stey — Développeur Web Freelance">
+    <meta property="og:description" content="Sites web, scripts FiveM, automatisations. Solutions digitales sur mesure, rapides et pro.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80">
+    <meta name="theme-color" content="#111115">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Scroll progress bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+
+    <!-- Floating logos background -->
+    <div class="floating-logos" id="floating-logos"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-terminal">
+            <div class="terminal-header">
+                <span class="terminal-dot red"></span>
+                <span class="terminal-dot yellow"></span>
+                <span class="terminal-dot green"></span>
+                <span class="terminal-title">stey@portfolio ~ $</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+                <div class="terminal-line" style="--i:0"><span class="term-prompt">$</span> <span class="term-cmd">initializing</span> stey.portfolio<span class="term-cursor">_</span></div>
+                <div class="terminal-line" style="--i:1"><span class="term-success">[OK]</span> modules loaded</div>
+                <div class="terminal-line" style="--i:2"><span class="term-prompt">$</span> <span class="term-cmd">compiling</span> styles.css <span class="term-dots">...</span> <span class="term-success">done</span></div>
+                <div class="terminal-line" style="--i:3"><span class="term-prompt">$</span> <span class="term-cmd">deploying</span> pixels <span class="term-bar">██████████</span> 100%</div>
+                <div class="terminal-line" style="--i:4"><span class="term-success">[OK]</span> responsive? <span class="term-success">check.</span></div>
+                <div class="terminal-line" style="--i:5"><span class="term-prompt">$</span> <span class="term-cmd">inject</span> creativity --max</div>
+                <div class="terminal-line" style="--i:6"><span class="term-success">[OK]</span> vibes: <span class="term-highlight">immaculate</span></div>
+                <div class="terminal-line ready" style="--i:7"><span class="term-prompt">$</span> <span class="term-ready">ready. welcome.</span><span class="term-cursor blink">_</span></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <a href="#" class="logo-link">
+                <svg class="logo-svg logo-animated" viewBox="0 0 160 50" width="130" height="42">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#d946ef"/>
+                            <stop offset="40%" stop-color="#a855f7"/>
+                            <stop offset="70%" stop-color="#7c3aed"/>
+                            <stop offset="100%" stop-color="#fb923c"/>
+                        </linearGradient>
+                        <linearGradient id="logoLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" stop-color="#fb923c"/>
+                            <stop offset="100%" stop-color="#7c3aed"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- S - serif style, big elegant curves -->
+                    <path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#logoGrad)"/>
+                    <!-- Serif curl on S -->
+                    <path d="M14 12 C12 14 10 13 9 11 C8 8 11 5 14 4" fill="url(#logoGrad)" opacity="0.9"/>
+                    <!-- t - serif -->
+                    <path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#logoGrad)"/>
+                    <rect x="44" y="16" width="14" height="3" rx="1" fill="url(#logoGrad)"/>
+                    <!-- e - serif elegant -->
+                    <path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#logoGrad)"/>
+                    <!-- y - serif with elegant tail -->
+                    <path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#logoGrad)"/>
+                    <path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#logoGrad)"/>
+                    <!-- Underline sweep -->
+                    <path d="M15 42 L95 42" stroke="url(#logoLine)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5">
+                        <animate attributeName="stroke-dasharray" values="0 100;80 100" dur="2s" fill="freeze"/>
+                    </path>
+                    <!-- Sparkles -->
+                    <path class="sparkle sparkle-1" d="M10 8 L11 5 L12 8 L15 9 L12 10 L11 13 L10 10 L7 9 Z" fill="#d946ef" opacity="0.8">
+                        <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
+                        <animateTransform attributeName="transform" type="scale" values="1;0.7;1" dur="2s" repeatCount="indefinite" additive="sum"/>
+                    </path>
+                    <path class="sparkle sparkle-2" d="M105 6 L106 3 L107 6 L110 7 L107 8 L106 11 L105 8 L102 7 Z" fill="#f472b6" opacity="0.7">
+                        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite"/>
+                        <animateTransform attributeName="transform" type="scale" values="1;0.6;1" dur="2.5s" repeatCount="indefinite" additive="sum"/>
+                    </path>
+                    <!-- Dot -->
+                    <circle cx="108" cy="36" r="3" fill="#fb923c">
+                        <animate attributeName="r" values="3;4;3" dur="1.5s" repeatCount="indefinite"/>
+                    </circle>
+                </svg>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#processus">Processus</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="btn btn-nav">Me contacter</a>
+            <button class="menu-btn" id="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projets">Projets</a></li>
+            <li><a href="#processus">Processus</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero" id="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid-bg"></div>
+        <canvas class="hero-canvas" id="hero-canvas"></canvas>
+        <div class="hero-content container">
+            <div class="hero-left" data-animate="fade-up">
+                <div class="hero-status">
+                    <span class="status-dot"></span>
+                    Disponible pour de nouveaux projets
+                </div>
+                <h1 class="hero-title">
+                    Salut, moi c'est Stey.<br>
+                    Je crée vos<br>
+                    <span class="typed-wrapper">
+                        <span class="typed" id="typed"></span>
+                        <span class="typed-cursor">|</span>
+                    </span>
+                </h1>
+                <p class="hero-desc">Passionné par le web et le digital, je transforme vos idées en pixels qui claquent. Site, script, automatisation — je m'occupe de tout pendant que vous vous occupez de votre business.</p>
+                <div class="hero-actions">
+                    <a href="#projets" class="btn btn-primary">
+                        Voir mes projets
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                    </a>
+                    <a href="#contact" class="btn btn-ghost">Me contacter</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <span class="stat-number" data-target="1">0</span>
+                        <span class="stat-label">Projet réalisé</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-number" data-target="24">0</span><span class="stat-unit">h</span>
+                        <span class="stat-label">Temps de réponse</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="stat-number" data-target="100">0</span><span class="stat-unit">%</span>
+                        <span class="stat-label">Clients satisfaits</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual" data-animate="fade-left">
+                <div class="hero-code">
+                    <div class="code-header">
+                        <span class="code-dot red"></span>
+                        <span class="code-dot yellow"></span>
+                        <span class="code-dot green"></span>
+                        <span class="code-filename">stey.config.js</span>
+                    </div>
+                    <div class="code-body">
+                        <span class="code-line"><span class="code-keyword">const</span> <span class="code-var">stey</span> = {</span>
+                        <span class="code-line">  <span class="code-prop">mood</span>: <span class="code-string">'cafféiné'</span>,</span>
+                        <span class="code-line">  <span class="code-prop">dispo</span>: <span class="code-bool">true</span>,</span>
+                        <span class="code-line">  <span class="code-prop">délai</span>: <span class="code-string">'rapide (genre vraiment)'</span>,</span>
+                        <span class="code-line">  <span class="code-prop">prix</span>: <span class="code-string">'honnête'</span>,</span>
+                        <span class="code-line">  <span class="code-prop">café</span>: <span class="code-var">Infinity</span>,</span>
+                        <span class="code-line">};</span>
+                        <span class="code-line"></span>
+                        <span class="code-line"><span class="code-comment">// si vous lisez ça, vous êtes au bon endroit</span></span>
+                        <span class="code-line"><span class="code-keyword">export default</span> stey;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C360,120 720,0 1080,80 C1260,100 1380,40 1440,60 L1440,120 L0,120 Z" fill="#141418"/></svg>
+    </div>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Services</span>
+                <h2>Ce que je fais (et que j'adore faire)</h2>
+                <p>Chaque projet est une aventure. Voici comment je peux vous aider.</p>
+            </div>
+        </div>
+        <div class="services-slider" id="services-slider">
+            <div class="services-track" id="services-track">
+                <div class="srv-card">
+                    <div class="srv-emoji">🌐</div>
+                    <h3>Sites Web</h3>
+                    <p>Votre vitrine en ligne, pensée de A à Z. Je pars de votre idée et je livre un site qui vous ressemble — design moderne, rapide, responsive, et visible sur Google. Pas de template réchauffé, que du sur-mesure.</p>
+                    <div class="srv-tags"><span>Vitrine</span><span>E-commerce</span><span>Landing</span><span>SEO</span></div>
+                </div>
+                <div class="srv-card">
+                    <div class="srv-emoji">🎮</div>
+                    <h3>Scripts FiveM</h3>
+                    <p>Joueur RP moi-même, je connais ce qui fait un bon serveur. HUD clean, jobs immersifs, garage système, menus NUI — tout en Lua/JS optimisé pour zéro lag même à 200 joueurs.</p>
+                    <div class="srv-tags"><span>HUD</span><span>Jobs</span><span>Garage</span><span>NUI</span></div>
+                </div>
+                <div class="srv-card">
+                    <div class="srv-emoji">⚙️</div>
+                    <h3>Automatisations</h3>
+                    <p>Vous passez 2h par jour sur des tâches qu'un script peut faire en 2 secondes ? Je connecte vos outils entre eux : CRM, mails, factures, réseaux sociaux — tout roule tout seul.</p>
+                    <div class="srv-tags"><span>API</span><span>Webhooks</span><span>n8n</span><span>Zapier</span></div>
+                </div>
+                <div class="srv-card">
+                    <div class="srv-emoji">📈</div>
+                    <h3>SEO & Maintenance</h3>
+                    <p>Un site sans visiteurs c'est un magasin sans porte. Je m'occupe du référencement Google, des mises à jour, de la sécu et du support — pour que votre site reste au top sans que vous y pensiez.</p>
+                    <div class="srv-tags"><span>Google</span><span>Analytics</span><span>Mises à jour</span><span>Support</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,120 L0,120 Z" fill="#111115"/></svg>
+    </div>
+
+    <!-- Why me -->
+    <section class="why-me">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Pourquoi moi</span>
+                <h2>Ce qui fait la différence</h2>
+                <p>Au-delà du code, voilà pourquoi mes clients reviennent (et me recommandent).</p>
+            </div>
+            <div class="why-grid">
+                <div class="why-card" data-animate="fade-up" data-delay="0">
+                    <div class="why-number">01</div>
+                    <h3>Rapide, genre vraiment</h3>
+                    <p>Votre site en quelques jours, pas en 3 mois. Je code vite et bien — votre business n'attend pas, moi non plus.</p>
+                    <div class="why-accent"></div>
+                </div>
+                <div class="why-card" data-animate="fade-up" data-delay="100">
+                    <div class="why-number">02</div>
+                    <h3>Je parle humain</h3>
+                    <p>Pas de jargon technique incompréhensible. On discute normalement, vous comprenez tout, vous décidez de tout.</p>
+                    <div class="why-accent"></div>
+                </div>
+                <div class="why-card" data-animate="fade-up" data-delay="200">
+                    <div class="why-number">03</div>
+                    <h3>Design sur mesure</h3>
+                    <p>Zéro template réchauffé. Chaque pixel est pensé pour VOTRE image, VOTRE identité. Du unique, du vrai.</p>
+                    <div class="why-accent"></div>
+                </div>
+                <div class="why-card" data-animate="fade-up" data-delay="300">
+                    <div class="why-number">04</div>
+                    <h3>Fiable dans le temps</h3>
+                    <p>Code propre, site rapide, hébergement solide. Je disparais pas après le paiement — support inclus.</p>
+                    <div class="why-accent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,40 C360,100 720,20 1080,70 C1260,90 1380,30 1440,40 L1440,120 L0,120 Z" fill="#0e0e12"/></svg>
+    </div>
+
+    <!-- Tech Stack -->
+    <section class="tech-section" id="tech">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Technologies</span>
+                <h2>Mes armes du quotidien</h2>
+                <p>Chaque outil a été choisi au combat. Pas de hype, que de l'efficace.</p>
+            </div>
+        </div>
+        <div class="tech-slider">
+            <div class="tech-track">
+                <div class="tech-item"><span class="tech-icon">&#60;/&#62;</span><span>HTML5</span></div>
+                <div class="tech-item"><span class="tech-icon">#</span><span>CSS3</span></div>
+                <div class="tech-item"><span class="tech-icon">JS</span><span>JavaScript</span></div>
+                <div class="tech-item"><span class="tech-icon">Py</span><span>Python</span></div>
+                <div class="tech-item"><span class="tech-icon">N</span><span>Node.js</span></div>
+                <div class="tech-item"><span class="tech-icon">Lua</span><span>Lua</span></div>
+                <div class="tech-item"><span class="tech-icon">⚛</span><span>React</span></div>
+                <div class="tech-item"><span class="tech-icon">D</span><span>Discord.js</span></div>
+                <div class="tech-item"><span class="tech-icon">G</span><span>Git</span></div>
+                <div class="tech-item"><span class="tech-icon">F</span><span>Figma</span></div>
+                <!-- Duplicate for infinite loop -->
+                <div class="tech-item"><span class="tech-icon">&#60;/&#62;</span><span>HTML5</span></div>
+                <div class="tech-item"><span class="tech-icon">#</span><span>CSS3</span></div>
+                <div class="tech-item"><span class="tech-icon">JS</span><span>JavaScript</span></div>
+                <div class="tech-item"><span class="tech-icon">Py</span><span>Python</span></div>
+                <div class="tech-item"><span class="tech-icon">N</span><span>Node.js</span></div>
+                <div class="tech-item"><span class="tech-icon">Lua</span><span>Lua</span></div>
+                <div class="tech-item"><span class="tech-icon">⚛</span><span>React</span></div>
+                <div class="tech-item"><span class="tech-icon">D</span><span>Discord.js</span></div>
+                <div class="tech-item"><span class="tech-icon">G</span><span>Git</span></div>
+                <div class="tech-item"><span class="tech-icon">F</span><span>Figma</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun code snippet -->
+    <section class="fun-section">
+        <div class="container">
+            <div class="fun-snippet" data-animate="fade-up">
+                <div class="snippet-code">
+                    <span class="code-keyword">if</span> (client.happy) {<br>
+                    &nbsp;&nbsp;<span class="code-func">celebrate</span>();<br>
+                    } <span class="code-keyword">else</span> {<br>
+                    &nbsp;&nbsp;<span class="code-func">refaireTout</span>(<span class="code-string">'gratuitement'</span>);<br>
+                    }
+                </div>
+                <p class="snippet-caption">Spoiler : le else s'est jamais exécuté.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,70 C200,30 400,100 600,50 C800,0 1000,80 1200,40 C1320,20 1400,60 1440,70 L1440,120 L0,120 Z" fill="#161619"/></svg>
+    </div>
+
+    <!-- Projects -->
+    <section class="projects" id="projets">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Portfolio</span>
+                <h2>Un projet, une histoire</h2>
+                <p>Mon premier client — et le début de l'aventure.</p>
+            </div>
+            <div class="project-showcase" data-animate="fade-up">
+                <div class="project-card-big">
+                    <div class="project-img" style="background:linear-gradient(135deg,rgba(201,169,110,0.4),rgba(139,115,85,0.4)),url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
+                    <div class="project-overlay">
+                        <span class="project-badge">Client réel</span>
+                    </div>
+                    <div class="project-details">
+                        <span class="project-cat">Site Vitrine — Institut Bien-être</span>
+                        <h3>Cher à mon âme — Head Spa & Massages</h3>
+                        <p>Site vitrine professionnel pour un institut de bien-être à Mont-de-Marsan. Design premium sombre et élégant, animations avancées, prestations détaillées avec tarifs, réservation Planity intégrée, référencement local Google (SEO), responsive mobile.</p>
+                        <div class="project-tech">
+                            <span>HTML/CSS</span><span>JavaScript</span><span>SEO local</span><span>Animations</span><span>Responsive</span><span>Schema.org</span>
+                        </div>
+                        <a href="https://cher-a-mon-ame.github.io" target="_blank" rel="noopener" class="btn btn-project">
+                            Voir le site en ligne
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p class="projects-note" data-animate="fade-up">Et votre projet sera le prochain sur cette page. On commence quand ?</p>
+
+            <!-- Témoignage -->
+            <div class="testimonial" data-animate="fade-up">
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Stey a parfaitement compris ce que je voulais pour mon site. Résultat au-dessus de mes attentes, livré rapidement, avec un vrai suivi. Je recommande à 100%.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">C</div>
+                        <div>
+                            <strong>Cher à mon âme</strong>
+                            <span>Head Spa & Massages — Mont-de-Marsan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,50 C300,100 600,10 900,70 C1100,110 1300,30 1440,60 L1440,120 L0,120 Z" fill="#111115"/></svg>
+    </div>
+
+    <!-- Skills showcase -->
+    <section class="skills-section">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Savoir-faire</span>
+                <h2>Pas que du code (mais beaucoup quand même)</h2>
+                <p>Design, technique, communication — le triptyque d'un projet qui claque.</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-item" data-animate="fade-up" data-delay="0">
+                    <div class="skill-header">
+                        <span class="skill-name">Design UI/UX</span>
+                        <span class="skill-pct">90%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                </div>
+                <div class="skill-item" data-animate="fade-up" data-delay="60">
+                    <div class="skill-header">
+                        <span class="skill-name">Front-end (HTML/CSS/JS)</span>
+                        <span class="skill-pct">95%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+                </div>
+                <div class="skill-item" data-animate="fade-up" data-delay="120">
+                    <div class="skill-header">
+                        <span class="skill-name">Animations & Interactions</span>
+                        <span class="skill-pct">85%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-item" data-animate="fade-up" data-delay="180">
+                    <div class="skill-header">
+                        <span class="skill-name">Back-end (Node.js/Python)</span>
+                        <span class="skill-pct">80%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
+                </div>
+                <div class="skill-item" data-animate="fade-up" data-delay="240">
+                    <div class="skill-header">
+                        <span class="skill-name">SEO & Référencement</span>
+                        <span class="skill-pct">85%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+                </div>
+                <div class="skill-item" data-animate="fade-up" data-delay="300">
+                    <div class="skill-header">
+                        <span class="skill-name">Bots & Automatisation</span>
+                        <span class="skill-pct">90%</span>
+                    </div>
+                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+                </div>
+            </div>
+            <!-- Fun skills badges -->
+            <div class="bonus-skills" data-animate="fade-up">
+                <span class="bonus-badge">🎮 Scripts FiveM</span>
+                <span class="bonus-badge">🤖 Discord.js</span>
+                <span class="bonus-badge">📱 Responsive</span>
+                <span class="bonus-badge">⚡ Performance</span>
+                <span class="bonus-badge">🎨 Figma</span>
+                <span class="bonus-badge">🔧 Git/GitHub</span>
+                <span class="bonus-badge">🌐 Hébergement</span>
+                <span class="bonus-badge">💎 Pixel Perfect</span>
+                <span class="bonus-badge">☕ Café → Code</span>
+                <span class="bonus-badge">🌙 Debug nocturne</span>
+                <span class="bonus-badge">🧠 Résolution de problèmes</span>
+                <span class="bonus-badge">💬 Communication claire</span>
+            </div>
+            <!-- Real stats humour -->
+            <div class="real-stats" data-animate="fade-up">
+                <div class="real-stat">
+                    <span class="real-stat-number" data-target="347">0</span>
+                    <span class="real-stat-label">cafés bus cette année</span>
+                </div>
+                <div class="real-stat">
+                    <span class="real-stat-number" data-target="12847">0</span>
+                    <span class="real-stat-label">lignes de code écrites</span>
+                </div>
+                <div class="real-stat">
+                    <span class="real-stat-number" data-target="89">0</span>
+                    <span class="real-stat-label">bugs squashés (et 3 créés)</span>
+                </div>
+                <div class="real-stat">
+                    <span class="real-stat-number" data-target="∞">0</span>
+                    <span class="real-stat-label">onglets Stack Overflow ouverts</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun snippet between skills and process -->
+    <section class="fun-section">
+        <div class="container">
+            <div class="fun-snippet" data-animate="fade-up">
+                <div class="snippet-code">
+                    <span class="code-keyword">const</span> motivation = [<br>
+                    &nbsp;&nbsp;<span class="code-string">'passion'</span>,<br>
+                    &nbsp;&nbsp;<span class="code-string">'café'</span>,<br>
+                    &nbsp;&nbsp;<span class="code-string">'deadline demain'</span><br>
+                    ];<br>
+                    <span class="code-comment">// les 3 piliers de la productivité</span>
+                </div>
+                <p class="snippet-caption">Dans cet ordre. Ou pas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,90 C240,30 480,100 720,50 C960,0 1200,80 1440,40 L1440,120 L0,120 Z" fill="#141418"/></svg>
+    </div>
+
+    <!-- Process -->
+    <section class="process" id="processus">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Processus</span>
+                <h2>Simple comme bonjour</h2>
+                <p>Pas de prise de tête. On discute, je crée, vous validez, c'est en ligne.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step" data-animate="fade-up" data-delay="0">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                        </div>
+                        <h3>Discussion</h3>
+                        <p>On échange sur votre projet, vos besoins, vos envies. Je vous conseille sur la meilleure approche.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="100">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                        </div>
+                        <h3>Maquette</h3>
+                        <p>Je vous propose un design visuel avant de coder. Vous validez ou on ajuste ensemble.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="200">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                        </div>
+                        <h3>Développement</h3>
+                        <p>Je code votre projet avec les meilleures pratiques. Vous suivez l'avancement en temps réel.</p>
+                    </div>
+                </div>
+                <div class="process-step" data-animate="fade-up" data-delay="300">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <div class="step-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        </div>
+                        <h3>Livraison</h3>
+                        <p>Votre projet est en ligne, testé et optimisé. Support inclus après livraison.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun snippet between process and pricing -->
+    <section class="fun-section">
+        <div class="container">
+            <div class="fun-snippet wide" data-animate="fade-up">
+                <div class="snippet-code">
+                    <span class="code-keyword">while</span> (!projet.parfait) {<br>
+                    &nbsp;&nbsp;projet.<span class="code-func">améliorer</span>();<br>
+                    &nbsp;&nbsp;café++;<br>
+                    }
+                </div>
+                <p class="snippet-caption">Ma boucle préférée. Le café est inclus dans le devis.</p>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,30 C360,100 720,10 1080,70 C1260,100 1380,50 1440,30 L1440,120 L0,120 Z" fill="#0f0f13"/></svg>
+    </div>
+
+    <!-- Pricing -->
+    <section class="pricing" id="tarifs">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Tarifs</span>
+                <h2>Combien ça coûte ?</h2>
+                <p>Pas de mauvaise surprise au moment de payer. On en parle, je chiffre, vous validez. Simple.</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card" data-animate="fade-up" data-delay="0">
+                    <div class="pricing-header">
+                        <h3>Site Vitrine</h3>
+                        <p>Présence en ligne professionnelle</p>
+                    </div>
+                    <div class="pricing-price"><span class="price-amount">Sur devis</span></div>
+                    <ul class="pricing-features">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Design moderne sur mesure</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Responsive mobile/tablette</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Optimisé SEO (Google)</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Formulaire de contact</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Livraison rapide</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Hébergement gratuit inclus</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline-card">Demander un devis</a>
+                </div>
+                <div class="pricing-card popular" data-animate="fade-up" data-delay="100">
+                    <div class="popular-badge">Populaire</div>
+                    <div class="pricing-header">
+                        <h3>Site Complet</h3>
+                        <p>Fonctionnalités avancées sur mesure</p>
+                    </div>
+                    <div class="pricing-price"><span class="price-amount">Sur devis</span></div>
+                    <ul class="pricing-features">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Tout du site vitrine</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Animations avancées</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Multi-pages / E-commerce</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Système de réservation</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Google Analytics</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support 30 jours inclus</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary-card">Demander un devis</a>
+                </div>
+                <div class="pricing-card" data-animate="fade-up" data-delay="200">
+                    <div class="pricing-header">
+                        <h3>Script / Auto</h3>
+                        <p>Script FiveM ou automatisation sur mesure</p>
+                    </div>
+                    <div class="pricing-price"><span class="price-amount">Sur devis</span></div>
+                    <ul class="pricing-features">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Développement sur mesure</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Code propre & optimisé</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Installation gratuite</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Modifications incluses</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Livraison 24-72h</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support après livraison</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline-card">Demander un devis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun snippet before contact -->
+    <section class="fun-section">
+        <div class="container">
+            <div class="fun-snippet" data-animate="fade-up">
+                <div class="snippet-code">
+                    <span class="code-keyword">const</span> devis = <span class="code-func">calculerPrix</span>(projet);<br>
+                    client.<span class="code-func">sourire</span>(); <span class="code-comment">// toujours</span>
+                </div>
+                <p class="snippet-caption">Le code est propre, le prix aussi.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C200,100 500,20 750,70 C1000,120 1200,30 1440,60 L1440,120 L0,120 Z" fill="#141418"/></svg>
+    </div>
+
+    <!-- FAQ section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">FAQ</span>
+                <h2>Questions (pas si) bêtes</h2>
+                <p>Les trucs qu'on me demande souvent. Spoiler : la réponse est souvent "oui".</p>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-item" data-animate="fade-up" data-delay="0">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Tu travailles le week-end ?</h3>
+                    </div>
+                    <p class="faq-answer">Mon clavier ne sait pas quel jour on est. Et moi non plus parfois.</p>
+                </div>
+                <div class="faq-item" data-animate="fade-up" data-delay="80">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Pourquoi "sur devis" partout ?</h3>
+                    </div>
+                    <p class="faq-answer">Parce que votre projet est unique. Un prix fixe pour un truc custom, c'est comme acheter des chaussures sans connaître la pointure.</p>
+                </div>
+                <div class="faq-item" data-animate="fade-up" data-delay="160">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Tu peux modifier après livraison ?</h3>
+                    </div>
+                    <p class="faq-answer">Bien sûr. Je ne disparais pas une fois le paiement reçu. (Contrairement à certains freelances qu'on ne nommera pas.)</p>
+                </div>
+                <div class="faq-item" data-animate="fade-up" data-delay="240">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Et si le résultat me plaît pas ?</h3>
+                    </div>
+                    <p class="faq-answer">On modifie jusqu'à ce que vous kiffez. Satisfaction client > mon ego.</p>
+                </div>
+                <div class="faq-item" data-animate="fade-up" data-delay="320">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>C'est quoi ta stack préférée ?</h3>
+                    </div>
+                    <p class="faq-answer">Celle qui marche le mieux pour VOTRE projet. Pas de dogme, juste du pragmatisme (et du café).</p>
+                </div>
+                <div class="faq-item" data-animate="fade-up" data-delay="400">
+                    <div class="faq-question">
+                        <span class="faq-icon">?</span>
+                        <h3>Tu fais aussi le design ?</h3>
+                    </div>
+                    <p class="faq-answer">Oui. Design + code + déploiement. Un seul interlocuteur, zéro prise de tête.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fun snippet before contact 2 -->
+    <section class="fun-section">
+        <div class="container">
+            <div class="fun-snippet wide" data-animate="fade-up">
+                <div class="snippet-code">
+                    <span class="code-keyword">try</span> {<br>
+                    &nbsp;&nbsp;<span class="code-func">envoyerMessage</span>(<span class="code-string">'Stey'</span>);<br>
+                    } <span class="code-keyword">catch</span> (e) {<br>
+                    &nbsp;&nbsp;<span class="code-comment">// ça n'arrive jamais, le formulaire marche</span><br>
+                    }
+                </div>
+                <p class="snippet-caption">Le seul try/catch de ma vie sans erreur.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,50 C360,100 720,20 1080,80 C1200,100 1350,40 1440,50 L1440,120 L0,120 Z" fill="#111115"/></svg>
+    </div>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">Contact</span>
+                <h2>On en discute ?</h2>
+                <p>Une idée folle à 3h du mat' ? Un projet sérieux ? Les deux ? J'écoute.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-form-wrapper" data-animate="fade-up">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nom / Pseudo</label>
+                                <input type="text" name="name" placeholder="Votre nom" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" name="email" placeholder="votre@email.com" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Type de projet</label>
+                            <select name="type" required>
+                                <option value="">Choisir...</option>
+                                <option value="site-vitrine">Site vitrine</option>
+                                <option value="site-ecommerce">Site e-commerce</option>
+                                <option value="script-fivem">Script FiveM</option>
+                                <option value="automatisation">Automatisation</option>
+                                <option value="seo">SEO & Maintenance</option>
+                                <option value="autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Décrivez votre projet</label>
+                            <textarea name="message" rows="5" placeholder="Décrivez ce que vous voulez, votre budget, vos délais..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            Envoyer le message
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info" data-animate="fade-up" data-delay="100">
+                    <div class="info-card">
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                            </div>
+                            <div><strong>Instagram</strong><p><a href="https://www.instagram.com/steykoz?igsi=eWhzMTg3czFrOG56&utm_source=qr" target="_blank" rel="noopener" class="info-link">@steykoz</a></p></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                            </div>
+                            <div><strong>Discord</strong><p>Steykoz</p></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div><strong>Email</strong><p>steykoz.pro@gmail.com</p></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                            </div>
+                            <div><strong>Disponibilité</strong><p>7j/7 — Réponse sous 24h</p></div>
+                        </div>
+                        <div class="info-item">
+                            <div class="info-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div><strong>Garantie</strong><p>Satisfait ou modifié<br>Support après livraison</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Easter egg before footer -->
+    <section class="easter-egg">
+        <div class="container">
+            <div class="egg-content" data-animate="fade-up">
+                <p class="egg-text">Vous êtes arrivé jusqu'ici ? Respect. <span class="egg-highlight">C'est la preuve que le site fonctionne.</span></p>
+                <p class="egg-sub">Maintenant imaginez ce que je peux faire pour le vôtre.</p>
+                <div class="egg-secret">
+                    <p class="egg-konami">Psst... essayez le Konami Code.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <svg class="logo-svg logo-animated" viewBox="0 0 160 50" width="110" height="36">
+                        <defs><linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d946ef"/><stop offset="40%" stop-color="#a855f7"/><stop offset="70%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#fb923c"/></linearGradient></defs>
+                        <path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#logoGrad2)"/>
+                        <path d="M14 12 C12 14 10 13 9 11 C8 8 11 5 14 4" fill="url(#logoGrad2)" opacity="0.9"/>
+                        <path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#logoGrad2)"/>
+                        <rect x="44" y="16" width="14" height="3" rx="1" fill="url(#logoGrad2)"/>
+                        <path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#logoGrad2)"/>
+                        <path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#logoGrad2)"/>
+                        <path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#logoGrad2)"/>
+                        <circle cx="108" cy="36" r="3" fill="#fb923c"/>
+                    </svg>
+                    <p>Développeur web & digital freelance.<br>Solutions sur mesure pour vos projets.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#services">Services</a>
+                    <a href="#projets">Projets</a>
+                    <a href="#processus">Processus</a>
+                    <a href="#tarifs">Tarifs</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="https://www.instagram.com/steykoz?igsi=eWhzMTg3czFrOG56&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Stey. Tous droits réservés. Fait avec du code, du café et un peu de folie.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to top -->
+    <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
