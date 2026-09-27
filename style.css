@@ -862,9 +862,34 @@ img { max-width: 100%; display: block; }
 
 .pricing { padding: 120px 0; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
-.pricing-hint { text-align: center; margin-top: 32px; font-size: .9rem; color: var(--text2); }
-.pricing-hint a { color: var(--purple); text-decoration: none; font-weight: 500; transition: color .2s; }
-.pricing-hint a:hover { color: var(--pink); }
+.pricing-compare { margin-top: 40px; max-width: 800px; margin-left: auto; margin-right: auto; }
+.pricing-compare-btn {
+    display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%;
+    background: none; border: 1px solid var(--border); border-radius: var(--radius-sm);
+    color: var(--text2); font-size: .9rem; font-family: var(--font); padding: 14px 20px;
+    cursor: pointer; transition: all .3s;
+}
+.pricing-compare-btn:hover { color: var(--purple); border-color: rgba(139,92,246,.3); }
+.pricing-compare-btn .compare-chevron { transition: transform .3s; }
+.pricing-compare-btn.active .compare-chevron { transform: rotate(180deg); }
+.pricing-compare-content {
+    max-height: 0; overflow: hidden; transition: max-height .4s ease;
+}
+.pricing-compare-content.open { max-height: 600px; }
+.compare-inner {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    padding: 24px 0 0;
+}
+.compare-col {
+    padding: 24px; border-radius: var(--radius-sm);
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05);
+}
+.compare-col h4 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+.compare-col p { font-size: .85rem; color: var(--text2); line-height: 1.7; margin-bottom: 14px; }
+.compare-col ul { list-style: none; display: grid; gap: 6px; }
+.compare-col ul li { font-size: .83rem; color: var(--text2); padding-left: 18px; position: relative; line-height: 1.6; }
+.compare-col ul li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+@media (max-width: 768px) { .compare-inner { grid-template-columns: 1fr; } }
 .pricing-card {
     background: var(--glass);
     border: 1px solid var(--border);

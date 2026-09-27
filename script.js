@@ -264,6 +264,15 @@ const pricingObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.observe(card));
 
+const compareBtn = document.getElementById('compare-btn');
+const compareContent = document.getElementById('compare-content');
+if (compareBtn && compareContent) {
+    compareBtn.addEventListener('click', () => {
+        compareBtn.classList.toggle('active');
+        compareContent.classList.toggle('open');
+    });
+}
+
 (function() {
     const slider = document.getElementById('services-slider');
     if (!slider) return;
