@@ -1,8 +1,3 @@
-/* =============================================
-   Stey Portfolio — CSS
-   ============================================= */
-
-/* --- Reset & Base --- */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -40,10 +35,6 @@ body {
 .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 img { max-width: 100%; display: block; }
 
-/* --- Wave folds background --- */
-
-
-/* Wave dividers between sections */
 .wave-divider {
     position: relative;
     height: 120px;
@@ -61,7 +52,6 @@ img { max-width: 100%; display: block; }
     filter: drop-shadow(0 -8px 16px rgba(0,0,0,.6)) drop-shadow(0 -2px 4px rgba(0,0,0,.3));
 }
 
-/* Fold-style section backgrounds */
 .services,
 .process,
 .pricing,
@@ -75,7 +65,6 @@ img { max-width: 100%; display: block; }
 .contact { background: #08080D; }
 .footer { background: #050509; }
 
-/* --- Scroll progress bar --- */
 .scroll-progress {
     position: fixed;
     top: 0;
@@ -89,7 +78,6 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 0 8px rgba(244,114,182,.5);
 }
 
-/* --- Noise overlay --- */
 .noise {
     position: fixed;
     inset: 0;
@@ -99,7 +87,6 @@ img { max-width: 100%; display: block; }
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
-/* --- Loader --- */
 .loader {
     position: fixed;
     inset: 0;
@@ -204,7 +191,6 @@ img { max-width: 100%; display: block; }
 
 @keyframes fadeIn { to { opacity: 1; } }
 
-/* --- Header --- */
 .header {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -267,7 +253,6 @@ img { max-width: 100%; display: block; }
 .nav-links a:hover { color: var(--text); }
 .nav-links a:hover::after { transform: scaleX(1); }
 
-/* Buttons */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -332,7 +317,6 @@ img { max-width: 100%; display: block; }
 .btn-primary-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(139,92,246,.4); }
 .btn-full { width: 100%; justify-content: center; }
 
-/* Menu button */
 .menu-btn {
     display: none;
     flex-direction: column;
@@ -353,7 +337,6 @@ img { max-width: 100%; display: block; }
 .menu-btn.active span:nth-child(2) { opacity: 0; }
 .menu-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Mobile menu */
 .mobile-menu {
     position: fixed;
     inset: 0;
@@ -373,7 +356,6 @@ img { max-width: 100%; display: block; }
 .mobile-menu a { color: var(--text); font-size: 1.5rem; font-family: var(--font-head); font-weight: 600; text-decoration: none; }
 .mobile-menu a:hover { color: var(--purple); }
 
-/* --- Hero --- */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -476,7 +458,6 @@ img { max-width: 100%; display: block; }
 }
 .stat-label { display: block; font-size: .75rem; color: var(--text2); margin-top: 4px; }
 
-/* Code block */
 .hero-visual { display: flex; align-items: center; justify-content: center; }
 .hero-code {
     background: #1e1e2e;
@@ -518,7 +499,6 @@ img { max-width: 100%; display: block; }
 .code-bool { color: #fab387; }
 .code-func { color: #89b4fa; }
 
-/* Scroll indicator */
 .hero-scroll {
     position: absolute;
     bottom: 30px;
@@ -536,7 +516,6 @@ img { max-width: 100%; display: block; }
 .scroll-line { width: 2px; height: 40px; background: linear-gradient(to bottom, var(--purple), transparent); animation: scrollLine 2s infinite; border-radius: 99px; }
 @keyframes scrollLine { 0% { opacity: 0; transform: scaleY(0); transform-origin: top; } 50% { opacity: 1; transform: scaleY(1); } 100% { opacity: 0; transform: scaleY(0); transform-origin: bottom; } }
 
-/* --- Sections common --- */
 .section-head { text-align: center; margin-bottom: 64px; }
 .section-tag {
     display: inline-block;
@@ -559,7 +538,6 @@ img { max-width: 100%; display: block; }
 }
 .section-head p { color: var(--text2); max-width: 500px; margin: 0 auto; }
 
-/* --- Services Cards Slider --- */
 .services { padding: 120px 0; overflow: hidden; }
 .services-slider {
     margin-top: 48px;
@@ -682,7 +660,6 @@ img { max-width: 100%; display: block; }
 }
 .srv-more:hover { color: var(--pink); gap: 10px; }
 
-/* --- Projects --- */
 .projects { padding: 120px 0; }
 .project-showcase { max-width: 900px; margin: 0 auto; }
 .project-card-big {
@@ -731,7 +708,6 @@ img { max-width: 100%; display: block; }
     font-style: italic;
 }
 
-/* --- Testimonial --- */
 .testimonial {
     max-width: 650px;
     margin: 48px auto 0;
@@ -788,7 +764,6 @@ img { max-width: 100%; display: block; }
     color: var(--text2);
 }
 
-/* --- Back to top --- */
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -822,7 +797,6 @@ img { max-width: 100%; display: block; }
     box-shadow: 0 8px 24px rgba(139,92,246,.3);
 }
 
-/* --- Process --- */
 .process { padding: 120px 0; }
 .process-timeline {
     max-width: 700px;
@@ -884,7 +858,6 @@ img { max-width: 100%; display: block; }
 .step-content h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
 .step-content p { font-size: .88rem; color: var(--text2); line-height: 1.6; }
 
-/* --- Pricing --- */
 .pricing { padding: 120px 0; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
 .pricing-card {
@@ -932,7 +905,6 @@ img { max-width: 100%; display: block; }
 }
 .pricing-features li svg { color: var(--green); flex-shrink: 0; }
 
-/* --- Contact --- */
 .contact { padding: 120px 0; }
 .contact-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 48px; align-items: start; }
 .contact-form-wrapper {
@@ -999,7 +971,6 @@ img { max-width: 100%; display: block; }
 .info-link { color: var(--pink); text-decoration: none; transition: color .2s; }
 .info-link:hover { color: var(--orange); }
 
-/* --- Footer --- */
 .footer {
     border-top: 1px solid var(--border);
     padding: 48px 0 24px;
@@ -1032,7 +1003,6 @@ img { max-width: 100%; display: block; }
 .footer-bottom p { font-size: .8rem; color: var(--text2); }
 
 
-/* --- FAQ section --- */
 .faq-section { padding: 100px 0; }
 .faq-grid {
     display: grid;
@@ -1097,7 +1067,6 @@ img { max-width: 100%; display: block; }
 }
 
 
-/* --- Cursor sparkle trail --- */
 .cursor-sparkle {
     position: fixed;
     pointer-events: none;
@@ -1112,7 +1081,6 @@ img { max-width: 100%; display: block; }
     100% { opacity: 0; transform: scale(0) translateY(-20px); }
 }
 
-/* --- Background bubbles --- */
 .bg-bubbles {
     position: fixed;
     inset: 0;
@@ -1136,7 +1104,6 @@ img { max-width: 100%; display: block; }
     100% { transform: translateY(-110vh) translateX(-5px) scale(1); }
 }
 
-/* --- Floating logos --- */
 .floating-logos {
     position: fixed;
     inset: 0;
@@ -1157,7 +1124,6 @@ img { max-width: 100%; display: block; }
     75% { transform: translate(30px, -20px) rotate(4deg) scale(1.02); }
 }
 
-/* --- Decorative shapes --- */
 .services::after {
     content: '';
     position: absolute;
@@ -1199,14 +1165,10 @@ img { max-width: 100%; display: block; }
     50% { transform: translate(20px, -30px); }
 }
 
-/* --- Animations --- */
 [data-animate] { opacity: 0; transform: translateY(30px); transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
 [data-animate="fade-left"] { transform: translateX(30px); }
 [data-animate].animated { opacity: 1; transform: translate(0); }
 
-/* Hover animations on cards */
-
-/* Pricing card shine sweep */
 .pricing-card::after {
     content: '';
     position: absolute;
@@ -1220,14 +1182,12 @@ img { max-width: 100%; display: block; }
 }
 .pricing-card:hover::after { left: 125%; }
 
-/* Status dot bounce */
 .status-dot { animation: pulse 2s infinite, statusBounce 3s ease-in-out infinite; }
 @keyframes statusBounce {
     0%, 100% { transform: scale(1); }
     50% { transform: scale(1.4); }
 }
 
-/* Hero code block float */
 .hero-code {
     animation: codeFloat 6s ease-in-out infinite;
 }
@@ -1237,36 +1197,30 @@ img { max-width: 100%; display: block; }
 }
 .hero-code:hover { animation-play-state: paused; transform: perspective(1000px) rotateY(0) rotateX(0); }
 
-/* Section tag pulse */
 .section-tag { animation: tagPulse 3s ease-in-out infinite; }
 @keyframes tagPulse {
     0%, 100% { box-shadow: 0 0 0 0 rgba(244,114,182,.2); }
     50% { box-shadow: 0 0 0 6px rgba(244,114,182,0); }
 }
 
-/* Scroll indicator enhanced */
 .hero-scroll { animation: scrollFade 3s ease-in-out infinite; }
 @keyframes scrollFade {
     0%, 100% { opacity: 1; }
     50% { opacity: .4; }
 }
 
-/* Nav links hover underline animation */
 .nav-links a { transition: color .2s, transform .2s; }
 .nav-links a:hover { transform: translateY(-2px); }
 
-/* Process step hover */
 .process-step { transition: transform .3s; }
 .process-step:hover { transform: translateX(8px); }
 .step-number { transition: transform .3s, box-shadow .3s; }
 .process-step:hover .step-number { transform: scale(1.1); }
 
 
-/* Button press animation */
 .btn { transition: all .25s cubic-bezier(.4,0,.2,1); }
 .btn:active { transform: scale(.95) !important; }
 
-/* CTA gradient animation */
 .btn-primary, .btn-nav, .btn-primary-card, .btn-project {
     background-size: 200% 100%;
     animation: gradientShift 3s ease-in-out infinite;
@@ -1276,12 +1230,10 @@ img { max-width: 100%; display: block; }
     50% { background-position: 100% 50%; }
 }
 
-/* Info items stagger */
 .info-item { transition: transform .3s, background .3s; padding: 10px; border-radius: 12px; }
 .info-item:hover { transform: translateX(6px); background: rgba(255,255,255,.03); }
 
 
-/* --- Responsive --- */
 @media (max-width: 1024px) {
     .services-grid { grid-template-columns: repeat(2, 1fr); }
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1308,7 +1260,6 @@ img { max-width: 100%; display: block; }
     .hero-scroll { display: none; }
 }
 
-/* --- Discord Floating Widget --- */
 .discord-widget {
     position: fixed;
     bottom: 24px;
@@ -1334,7 +1285,6 @@ img { max-width: 100%; display: block; }
     pointer-events: none;
 }
 
-/* --- About section --- */
 .about { padding: 100px 0; background: #0a0a12; }
 .about-grid {
     display: grid;
@@ -1393,7 +1343,6 @@ img { max-width: 100%; display: block; }
     .about-facts { justify-content: center; }
 }
 
-/* --- FAQ Accordion --- */
 .faq-item { cursor: pointer; }
 .faq-chevron {
     margin-left: auto;
@@ -1413,7 +1362,6 @@ img { max-width: 100%; display: block; }
     opacity: 1;
 }
 
-/* --- Services slider indicators --- */
 .services-nav {
     display: flex;
     justify-content: center;
@@ -1437,7 +1385,6 @@ img { max-width: 100%; display: block; }
     border-radius: 99px;
 }
 
-/* --- Form success toast --- */
 .form-toast {
     position: fixed;
     top: 100px;
@@ -1461,7 +1408,6 @@ img { max-width: 100%; display: block; }
     transform: translateX(-50%) translateY(0);
 }
 
-/* --- Projects grid --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1478,7 +1424,6 @@ img { max-width: 100%; display: block; }
     .projects-grid { grid-template-columns: 1fr; }
 }
 
-/* --- Testimonials grid --- */
 .testimonials-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1490,9 +1435,6 @@ img { max-width: 100%; display: block; }
     .testimonials-grid { grid-template-columns: 1fr; }
 }
 
-/* --- Back-to-top mobile fix (overridden by mobile-cta media query below) --- */
-
-/* --- prefers-reduced-motion --- */
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         animation-duration: 0.01ms !important;
@@ -1504,7 +1446,6 @@ img { max-width: 100%; display: block; }
     .logo-animated { animation: none; }
 }
 
-/* --- Mentions légales link --- */
 .footer-legal {
     margin-top: 8px;
     font-size: .75rem;
@@ -1516,7 +1457,6 @@ img { max-width: 100%; display: block; }
 }
 .footer-legal a:hover { color: var(--pink); }
 
-/* --- Mobile sticky CTA --- */
 .mobile-cta {
     display: none;
     position: fixed;
@@ -1550,7 +1490,6 @@ img { max-width: 100%; display: block; }
     .back-to-top { bottom: 130px; }
 }
 
-/* --- Hero code live-typing --- */
 .code-line-typing {
     display: block;
     opacity: 0;
@@ -1567,7 +1506,6 @@ img { max-width: 100%; display: block; }
     animation: termBlink .8s steps(1) infinite;
 }
 
-/* --- Custom cursor --- */
 .custom-cursor {
     position: fixed;
     width: 20px;

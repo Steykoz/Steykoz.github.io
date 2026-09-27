@@ -1,8 +1,3 @@
-/* =============================================
-   Stey Portfolio — JavaScript
-   ============================================= */
-
-// Loader terminal -> glitch out
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (!loader) return;
@@ -14,7 +9,6 @@ window.addEventListener('load', () => {
     }, totalDelay);
 });
 
-// Header scroll + progress bar
 const header = document.getElementById('header');
 const scrollProgress = document.getElementById('scroll-progress');
 if (header && scrollProgress) {
@@ -27,7 +21,6 @@ if (header && scrollProgress) {
     });
 }
 
-// Mobile menu
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 if (menuBtn && mobileMenu) {
@@ -45,7 +38,6 @@ if (menuBtn && mobileMenu) {
     });
 }
 
-// Typed effect
 const words = ['sites web', 'bots Discord', 'scripts FiveM', 'automatisations', 'landing pages'];
 let wordIndex = 0;
 let charIndex = 0;
@@ -79,7 +71,6 @@ function type() {
 }
 if (typedEl) setTimeout(type, 1000);
 
-// Hero code block live-typing
 (function() {
     const container = document.getElementById('hero-code-body');
     if (!container) return;
@@ -108,7 +99,6 @@ if (typedEl) setTimeout(type, 1000);
     setTimeout(typeLine, 2000);
 })();
 
-// Hero canvas particles
 (function() {
     const canvas = document.getElementById('hero-canvas');
     if (!canvas) return;
@@ -149,7 +139,6 @@ if (typedEl) setTimeout(type, 1000);
             ctx.fill();
         });
 
-        // Draw connections
         for (let i = 0; i < particles.length; i++) {
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
@@ -169,7 +158,6 @@ if (typedEl) setTimeout(type, 1000);
     animate();
 })();
 
-// Animated counters
 function animateCounters() {
     document.querySelectorAll('.stat-number').forEach(el => {
         const target = parseInt(el.dataset.target);
@@ -186,7 +174,6 @@ function animateCounters() {
     });
 }
 
-// Scroll animations
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -199,7 +186,6 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-animate]').forEach(el => observer.observe(el));
 
-// Counter trigger
 const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -212,7 +198,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) statsObserver.observe(heroStats);
 
-// Skill bars animation
 const skillObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -230,7 +215,6 @@ const skillObserver = new IntersectionObserver((entries) => {
 const skillsGrid = document.querySelector('.skills-grid');
 if (skillsGrid) skillObserver.observe(skillsGrid);
 
-// Stagger animation on pricing features
 const pricingObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -250,7 +234,6 @@ const pricingObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3 });
 document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.observe(card));
 
-// Services slider drag-to-scroll + card reveal
 (function() {
     const slider = document.getElementById('services-slider');
     if (!slider) return;
@@ -275,7 +258,6 @@ document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.obser
         slider.scrollLeft = scrollLeft - walk;
     });
 
-    // Reveal cards with stagger when section enters view
     const cards = document.querySelectorAll('.srv-card');
     const srvObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -290,7 +272,6 @@ document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.obser
     srvObserver.observe(slider);
 })();
 
-// Services slider dot indicators
 (function() {
     const slider = document.getElementById('services-slider');
     const cards = document.querySelectorAll('.srv-card');
@@ -316,7 +297,6 @@ document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.obser
     });
 })();
 
-// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -327,7 +307,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-// 3D tilt on pricing cards
 document.querySelectorAll('.pricing-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -340,7 +319,6 @@ document.querySelectorAll('.pricing-card').forEach(card => {
     });
 });
 
-// Background bubbles
 (function() {
     const bubbleContainer = document.createElement('div');
     bubbleContainer.className = 'bg-bubbles';
@@ -359,7 +337,6 @@ document.querySelectorAll('.pricing-card').forEach(card => {
     }
 })();
 
-// Floating logos
 (function() {
     const container = document.getElementById('floating-logos');
     if (!container) return;
@@ -380,7 +357,6 @@ document.querySelectorAll('.pricing-card').forEach(card => {
     }
 })();
 
-// Parallax on scroll
 window.addEventListener('scroll', () => {
     const scrolled = window.scrollY;
     const heroLeft = document.querySelector('.hero-left');
@@ -391,7 +367,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Mouse glow effect on cards
 document.querySelectorAll('.pricing-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
@@ -404,7 +379,6 @@ document.querySelectorAll('.pricing-card').forEach(card => {
     });
 });
 
-// Real stats counter animation
 const realStatsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -441,7 +415,6 @@ const realStatsObserver = new IntersectionObserver((entries) => {
 const realStats = document.querySelector('.real-stats');
 if (realStats) realStatsObserver.observe(realStats);
 
-// Konami Code easter egg
 (function() {
     const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
     let index = 0;
@@ -479,7 +452,6 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
-// Custom cursor
 (function() {
     const cursor = document.getElementById('custom-cursor');
     if (!cursor || !window.matchMedia('(pointer: fine)').matches) return;
@@ -494,7 +466,6 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
-// Cursor sparkle trail
 (function() {
     let lastTime = 0;
     const colors = ['#8B5CF6', '#f472b6', '#fb923c', '#d946ef'];
@@ -512,7 +483,6 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
-// FAQ accordion toggle
 document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
         const wasActive = item.classList.contains('active');
@@ -521,7 +491,6 @@ document.querySelectorAll('.faq-item').forEach(item => {
     });
 });
 
-// Random tooltip on bonus badges
 const badgeTooltips = [
     'Testé et approuvé',
     'Level max atteint',
@@ -539,7 +508,6 @@ document.querySelectorAll('.bonus-badge').forEach(badge => {
     });
 });
 
-// Back to top button + mobile CTA
 const backToTop = document.getElementById('back-to-top');
 const mobileCta = document.getElementById('mobile-cta');
 const contactSection = document.getElementById('contact');
@@ -556,7 +524,6 @@ if (backToTop) {
     });
 }
 
-// Auto-select project type from pricing CTA
 document.querySelectorAll('[data-select]').forEach(btn => {
     btn.addEventListener('click', () => {
         const val = btn.dataset.select;
@@ -567,7 +534,6 @@ document.querySelectorAll('[data-select]').forEach(btn => {
     });
 });
 
-// Contact form — Web3Forms
 const contactForm = document.getElementById('contact-form');
 if (contactForm) contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
