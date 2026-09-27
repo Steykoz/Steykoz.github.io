@@ -5,8 +5,9 @@
 // Loader terminal -> glitch out
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
+    if (!loader) return;
     const lines = document.querySelectorAll('.terminal-line');
-    const totalDelay = (lines.length - 1) * 300 + 200 + 600;
+    const totalDelay = (lines.length - 1) * 150 + 100 + 300;
     setTimeout(() => {
         loader.classList.add('glitch-out');
         setTimeout(() => loader.classList.add('hidden'), 500);
@@ -16,38 +17,43 @@ window.addEventListener('load', () => {
 // Header scroll + progress bar
 const header = document.getElementById('header');
 const scrollProgress = document.getElementById('scroll-progress');
-window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 50);
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (scrollTop / docHeight) * 100;
-    scrollProgress.style.width = progress + '%';
-});
+if (header && scrollProgress) {
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        scrollProgress.style.width = progress + '%';
+    });
+}
 
 // Mobile menu
 const menuBtn = document.getElementById('menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
-menuBtn.addEventListener('click', () => {
-    menuBtn.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-});
-document.querySelectorAll('.mobile-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-        menuBtn.classList.remove('active');
-        mobileMenu.classList.remove('active');
-        document.body.style.overflow = '';
+if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', () => {
+        menuBtn.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
-});
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    });
+}
 
 // Typed effect
-const words = ['sites web', 'scripts FiveM', 'automatisations', 'landing pages'];
+const words = ['sites web', 'bots Discord', 'scripts FiveM', 'automatisations', 'landing pages'];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
 const typedEl = document.getElementById('typed');
 
 function type() {
+    if (!typedEl) return;
     const currentWord = words[wordIndex];
 
     if (isDeleting) {
@@ -71,11 +77,41 @@ function type() {
 
     setTimeout(type, speed);
 }
-setTimeout(type, 1000);
+if (typedEl) setTimeout(type, 1000);
+
+// Hero code block live-typing
+(function() {
+    const container = document.getElementById('hero-code-body');
+    if (!container) return;
+    const lines = [
+        '<span class="code-keyword">const</span> <span class="code-var">stey</span> = {',
+        '  <span class="code-prop">mood</span>: <span class="code-string">\'cafféiné\'</span>,',
+        '  <span class="code-prop">dispo</span>: <span class="code-bool">true</span>,',
+        '  <span class="code-prop">délai</span>: <span class="code-string">\'rapide (genre vraiment)\'</span>,',
+        '  <span class="code-prop">prix</span>: <span class="code-string">\'honnête\'</span>,',
+        '  <span class="code-prop">café</span>: <span class="code-var">Infinity</span>,',
+        '};',
+        '',
+        '<span class="code-comment">// si vous lisez ça, vous êtes au bon endroit</span>',
+        '<span class="code-keyword">export default</span> stey;'
+    ];
+    let lineIdx = 0;
+    function typeLine() {
+        if (lineIdx >= lines.length) return;
+        const span = document.createElement('span');
+        span.className = 'code-line code-line-typing';
+        span.innerHTML = lines[lineIdx] || '&nbsp;';
+        container.appendChild(span);
+        lineIdx++;
+        setTimeout(typeLine, 120 + Math.random() * 80);
+    }
+    setTimeout(typeLine, 2000);
+})();
 
 // Hero canvas particles
 (function() {
     const canvas = document.getElementById('hero-canvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     let particles = [];
     let w, h;
@@ -87,7 +123,7 @@ setTimeout(type, 1000);
     resize();
     window.addEventListener('resize', resize);
 
-    const colors = ['rgba(168,85,247,', 'rgba(244,114,182,', 'rgba(251,146,60,', 'rgba(255,255,255,'];
+    const colors = ['rgba(139,92,246,', 'rgba(244,114,182,', 'rgba(251,146,60,', 'rgba(255,255,255,'];
     for (let i = 0; i < 40; i++) {
         particles.push({
             x: Math.random() * w,
@@ -254,11 +290,39 @@ document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.obser
     srvObserver.observe(slider);
 })();
 
+// Services slider dot indicators
+(function() {
+    const slider = document.getElementById('services-slider');
+    const cards = document.querySelectorAll('.srv-card');
+    const nav = document.getElementById('services-nav');
+    if (!slider || !nav || !cards.length) return;
+
+    cards.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'services-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Service ' + (i + 1));
+        dot.addEventListener('click', () => {
+            cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        });
+        nav.appendChild(dot);
+    });
+
+    const dots = nav.querySelectorAll('.services-dot');
+    slider.addEventListener('scroll', () => {
+        const scrollLeft = slider.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 28;
+        const activeIndex = Math.round(scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+    });
+})();
+
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
-        const target = document.querySelector(link.getAttribute('href'));
+        const href = link.getAttribute('href');
+        if (href === '#' || href === '#top') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+        const target = document.querySelector(href);
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
@@ -298,8 +362,9 @@ document.querySelectorAll('.pricing-card').forEach(card => {
 // Floating logos
 (function() {
     const container = document.getElementById('floating-logos');
+    if (!container) return;
     function makeLogo(id) {
-        return `<svg viewBox="0 0 160 50" width="90" height="30"><defs><linearGradient id="fg${id}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d946ef"/><stop offset="40%" stop-color="#a855f7"/><stop offset="70%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#fb923c"/></linearGradient></defs><path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#fg${id})"/><path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#fg${id})"/><rect x="44" y="16" width="14" height="3" rx="1" fill="url(#fg${id})"/><path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#fg${id})"/><path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#fg${id})"/><path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#fg${id})"/><circle cx="108" cy="36" r="3" fill="#fb923c"/></svg>`;
+        return `<svg viewBox="0 0 160 50" width="90" height="30"><defs><linearGradient id="fg${id}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d946ef"/><stop offset="40%" stop-color="#8B5CF6"/><stop offset="70%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#fb923c"/></linearGradient></defs><path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#fg${id})"/><path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#fg${id})"/><rect x="44" y="16" width="14" height="3" rx="1" fill="url(#fg${id})"/><path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#fg${id})"/><path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#fg${id})"/><path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#fg${id})"/><circle cx="108" cy="36" r="3" fill="#fb923c"/></svg>`;
     }
 
     for (let i = 0; i < 18; i++) {
@@ -400,7 +465,7 @@ if (realStats) realStatsObserver.observe(realStats);
                         spark.className = 'cursor-sparkle';
                         spark.style.left = Math.random() * window.innerWidth + 'px';
                         spark.style.top = Math.random() * window.innerHeight + 'px';
-                        spark.style.background = ['#a855f7','#f472b6','#fb923c','#d946ef','#34d399'][Math.floor(Math.random() * 5)];
+                        spark.style.background = ['#8B5CF6','#f472b6','#fb923c','#d946ef','#34d399'][Math.floor(Math.random() * 5)];
                         spark.style.width = (Math.random() * 8 + 4) + 'px';
                         spark.style.height = spark.style.width;
                         document.body.appendChild(spark);
@@ -414,10 +479,25 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
+// Custom cursor
+(function() {
+    const cursor = document.getElementById('custom-cursor');
+    if (!cursor || !window.matchMedia('(pointer: fine)').matches) return;
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+    const interactiveEls = 'a, button, select, input, textarea, .srv-card, .pricing-card, .faq-item, .bonus-badge';
+    document.querySelectorAll(interactiveEls).forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
+    });
+})();
+
 // Cursor sparkle trail
 (function() {
     let lastTime = 0;
-    const colors = ['#a855f7', '#f472b6', '#fb923c', '#d946ef'];
+    const colors = ['#8B5CF6', '#f472b6', '#fb923c', '#d946ef'];
     document.addEventListener('mousemove', (e) => {
         const now = Date.now();
         if (now - lastTime < 50) return;
@@ -432,11 +512,12 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
-// FAQ items click to expand (subtle bounce)
+// FAQ accordion toggle
 document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
-        item.style.transform = 'scale(0.97)';
-        setTimeout(() => { item.style.transform = ''; }, 150);
+        const wasActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
     });
 });
 
@@ -458,31 +539,83 @@ document.querySelectorAll('.bonus-badge').forEach(badge => {
     });
 });
 
-// Back to top button
+// Back to top button + mobile CTA
 const backToTop = document.getElementById('back-to-top');
-window.addEventListener('scroll', () => {
-    backToTop.classList.toggle('visible', window.scrollY > 500);
-});
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+const mobileCta = document.getElementById('mobile-cta');
+const contactSection = document.getElementById('contact');
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        backToTop.classList.toggle('visible', window.scrollY > 500);
+        if (mobileCta) {
+            const contactTop = contactSection ? contactSection.getBoundingClientRect().top : Infinity;
+            mobileCta.classList.toggle('visible', window.scrollY > 400 && contactTop > window.innerHeight * 0.5);
+        }
+    });
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// Auto-select project type from pricing CTA
+document.querySelectorAll('[data-select]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const val = btn.dataset.select;
+        setTimeout(() => {
+            const select = document.querySelector('select[name="type"]');
+            if (select) select.value = val;
+        }, 800);
+    });
 });
 
-// Contact form
-document.getElementById('contact-form').addEventListener('submit', (e) => {
+// Contact form — Web3Forms
+const contactForm = document.getElementById('contact-form');
+if (contactForm) contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData);
-
-    const messages = JSON.parse(localStorage.getItem('portfolio_messages') || '[]');
-    messages.push({ ...data, date: new Date().toISOString() });
-    localStorage.setItem('portfolio_messages', JSON.stringify(messages));
-
     const btn = e.target.querySelector('button[type="submit"]');
-    btn.textContent = 'Message envoyé !';
-    btn.style.background = 'var(--green)';
+    const originalHTML = btn.innerHTML;
+    btn.textContent = 'Envoi en cours...';
+    btn.disabled = true;
+
+    const formData = new FormData(e.target);
+    formData.append('access_key', '2ad3c1ee-d9fb-4fee-afea-1a256d6f2ec3');
+    formData.append('subject', 'Nouveau message portfolio — ' + (formData.get('name') || 'Anonyme'));
+    formData.append('from_name', 'Portfolio Stey');
+
+    function showToast(message, success) {
+        const toast = document.getElementById('form-toast');
+        toast.textContent = message;
+        toast.style.borderColor = success ? 'rgba(52,211,153,.3)' : 'rgba(239,68,68,.3)';
+        toast.style.background = success ? 'rgba(52,211,153,.15)' : 'rgba(239,68,68,.15)';
+        toast.style.color = success ? 'var(--green)' : '#ef4444';
+        toast.classList.add('visible');
+        setTimeout(() => toast.classList.remove('visible'), 4000);
+    }
+
+    try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            body: formData
+        });
+        const data = await res.json();
+        if (data.success) {
+            btn.textContent = 'Message envoyé !';
+            btn.style.background = 'var(--green)';
+            e.target.reset();
+            showToast('Message envoyé avec succes !', true);
+        } else {
+            btn.textContent = 'Erreur, réessaie';
+            btn.style.background = '#ef4444';
+            showToast('Erreur lors de l\'envoi. Réessaie.', false);
+        }
+    } catch {
+        btn.textContent = 'Erreur réseau';
+        btn.style.background = '#ef4444';
+        showToast('Erreur réseau. Vérifie ta connexion.', false);
+    }
+
     setTimeout(() => {
-        btn.innerHTML = 'Envoyer le message <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>';
+        btn.innerHTML = originalHTML;
         btn.style.background = '';
+        btn.disabled = false;
     }, 3000);
-    e.target.reset();
 });

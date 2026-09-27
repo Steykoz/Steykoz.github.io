@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scripts FiveM sur mesure — Stey, Développeur Freelance</title>
+    <meta name="description" content="Scripts FiveM custom : HUD, jobs, garage, NUI, menus. Développement Lua/JS optimisé pour serveurs RP. Développeur freelance.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="canonical" href="https://steykoz.github.io/scripts-fivem.html">
+    <meta property="og:title" content="Scripts FiveM sur mesure — Stey">
+    <meta property="og:description" content="Scripts FiveM custom : HUD, jobs, garage, NUI. Lua/JS optimisé. Développeur freelance.">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#08080D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .service-page { padding: 140px 0 80px; }
+        .service-hero { text-align: center; margin-bottom: 80px; }
+        .service-hero .srv-emoji { font-size: 3rem; margin: 0 auto 20px; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,.03); border-radius: 20px; border: 1px solid rgba(255,255,255,.05); }
+        .service-hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 16px; }
+        .service-hero p { color: var(--text2); max-width: 600px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7; }
+        .service-back { display: inline-flex; align-items: center; gap: 8px; color: var(--purple); text-decoration: none; font-weight: 500; font-size: .9rem; margin-bottom: 40px; transition: color .2s; }
+        .service-back:hover { color: var(--pink); }
+        .types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 80px; }
+        .type-card { padding: 28px; border-radius: var(--radius); background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(8px); transition: all .3s; }
+        .type-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(139,92,246,.15); border-color: rgba(255,255,255,.12); }
+        .type-card h3 { font-family: var(--font-head); font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+        .type-card p { font-size: .85rem; color: var(--text2); line-height: 1.7; }
+        .type-card .type-icon { font-size: 1.5rem; margin-bottom: 12px; }
+        .included { max-width: 700px; margin: 0 auto 80px; }
+        .included h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; text-align: center; }
+        .included-list { list-style: none; display: grid; gap: 12px; }
+        .included-list li { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-radius: var(--radius-sm); background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); font-size: .9rem; }
+        .included-list li svg { color: var(--green); flex-shrink: 0; }
+        .service-cta { text-align: center; padding: 60px 0; }
+        .service-cta h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+        .service-cta p { color: var(--text2); margin-bottom: 24px; }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <section class="service-page">
+        <div class="container">
+            <a href="index.html" class="service-back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                Retour au portfolio
+            </a>
+
+            <div class="service-hero">
+                <div class="srv-emoji">🎮</div>
+                <h1>Scripts FiveM sur mesure</h1>
+                <p>Joueur RP moi-même, je sais ce qui fait un bon serveur. Scripts optimisés, zéro lag, expérience joueur au top.</p>
+            </div>
+
+            <div class="types-grid">
+                <div class="type-card">
+                    <div class="type-icon">📊</div>
+                    <h3>HUD Custom</h3>
+                    <p>Barre de vie, faim, soif, armure, minimap. Design NUI moderne en HTML/CSS/JS. Responsive, clean, personnalisable.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">👷</div>
+                    <h3>Jobs & Métiers</h3>
+                    <p>Systèmes de métiers complets : animations, interactions, progressions, salaires. Du pompier au dealer, tout est possible.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🚗</div>
+                    <h3>Garage & Véhicules</h3>
+                    <p>Garage personnel, tuning visuel, mécanique avancée, concessionnaire. Interface NUI clean et fluide.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">📱</div>
+                    <h3>Menus NUI</h3>
+                    <p>Interfaces modernes en HTML/JS : téléphone RP, tablette, ATM, inventaire. Design 2026, pas du ox_lib par défaut.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">🏠</div>
+                    <h3>Housing & Props</h3>
+                    <p>Système de logements, placement de meubles, stockage. Intérieur personnalisable par le joueur.</p>
+                </div>
+                <div class="type-card">
+                    <div class="type-icon">⚡</div>
+                    <h3>Script Custom</h3>
+                    <p>Vous avez une idée qui n'existe pas ? C'est mon truc. Décrivez votre vision, je la code.</p>
+                </div>
+            </div>
+
+            <div class="included">
+                <h2>Inclus dans chaque script</h2>
+                <ul class="included-list">
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Code Lua/JS optimisé (0ms idle)</li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Compatible ESX / QBCore / standalone</li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Installation et configuration incluses</li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Interface NUI si nécessaire</li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Documentation / config commentée</li>
+                    <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Modifications et support inclus</li>
+                </ul>
+            </div>
+
+            <div class="service-cta">
+                <h2>Un script en tête ?</h2>
+                <p>Décrivez ce que vous voulez pour votre serveur, je vous réponds sous 24h.</p>
+                <a href="index.html#contact" class="btn btn-primary">Demander un devis gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <div class="custom-cursor" id="custom-cursor"></div>
+    <script src="script.js"></script>
+</body>
+</html>

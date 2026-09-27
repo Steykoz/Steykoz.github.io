@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stey — Développeur Web & Digital Freelance</title>
-    <meta name="description" content="Développeur web freelance. Sites web, scripts FiveM, automatisations, SEO. Solutions digitales sur mesure, rapides et professionnelles.">
+    <meta name="description" content="Développeur web freelance. Sites web, bots Discord, scripts FiveM, automatisations, SEO. Solutions digitales sur mesure, rapides et professionnelles.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23a855f7'/%3E%3Cstop offset='100%25' stop-color='%23f472b6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ctext x='4' y='26' font-family='Arial' font-weight='bold' font-size='26' fill='url(%23g)'%3ES%3C/text%3E%3Ccircle cx='26' cy='24' r='3' fill='%23fb923c'/%3E%3C/svg%3E">
     <!-- Open Graph -->
     <meta property="og:title" content="Stey — Développeur Web Freelance">
-    <meta property="og:description" content="Sites web, scripts FiveM, automatisations. Solutions digitales sur mesure, rapides et pro.">
+    <meta property="og:description" content="Sites web, bots Discord, scripts FiveM, automatisations. Solutions digitales sur mesure, rapides et pro.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://steykoz.github.io">
+    <meta property="og:image" content="https://steykoz.github.io/og-image.png">
     <meta name="google-site-verification" content="c_FoTEcpxohWS1BgcYsKdK0uEZ4XRSSngDGkljtrnTY" />
-    <meta name="theme-color" content="#111115">
+    <meta name="theme-color" content="#08080D">
+    <link rel="canonical" href="https://steykoz.github.io">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" as="style">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script type="application/ld+json">
@@ -25,17 +29,21 @@
       "alternateName": "Steykoz",
       "url": "https://steykoz.github.io",
       "jobTitle": "Développeur Web Freelance",
-      "description": "Développeur web freelance spécialisé en sites web, scripts FiveM, automatisations et SEO.",
+      "description": "Développeur web freelance spécialisé en sites web, bots Discord, scripts FiveM, automatisations et SEO.",
+      "email": "steykoz.pro@gmail.com",
       "sameAs": [
         "https://www.instagram.com/steykoz",
-        "https://github.com/Steykoz"
+        "https://github.com/Steykoz",
+        "https://discord.gg/bDhNg2dBJF"
       ],
-      "knowsAbout": ["Développement web", "JavaScript", "HTML", "CSS", "Node.js", "Python", "FiveM", "SEO", "Automatisation"],
-      "offers": {
-        "@type": "Offer",
-        "name": "Développement web freelance",
-        "description": "Sites web, scripts FiveM, automatisations, SEO & maintenance"
-      }
+      "knowsAbout": ["Développement web", "JavaScript", "HTML", "CSS", "Node.js", "Python", "Discord.js", "Bots Discord", "FiveM", "SEO", "Automatisation"],
+      "makesOffer": [
+        {"@type": "Offer", "name": "Site Vitrine", "description": "Création de sites web responsive et optimisés SEO"},
+        {"@type": "Offer", "name": "Bots Discord", "description": "Bots Discord custom : modération, tickets, leveling, automatisation"},
+        {"@type": "Offer", "name": "Scripts FiveM", "description": "Scripts custom pour serveurs FiveM"},
+        {"@type": "Offer", "name": "Automatisation", "description": "Scripts, scraping, connexion d'outils"},
+        {"@type": "Offer", "name": "SEO & Maintenance", "description": "Optimisation et suivi mensuel"}
+      ]
     }
     </script>
 </head>
@@ -75,51 +83,44 @@
     <header class="header" id="header">
         <nav class="nav container">
             <a href="#" class="logo-link">
-                <svg class="logo-svg logo-animated" viewBox="0 0 160 50" width="130" height="42">
+                <svg class="logo-svg logo-animated" viewBox="0 0 140 44" width="140" height="44">
                     <defs>
                         <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                             <stop offset="0%" stop-color="#d946ef"/>
-                            <stop offset="40%" stop-color="#a855f7"/>
-                            <stop offset="70%" stop-color="#7c3aed"/>
-                            <stop offset="100%" stop-color="#fb923c"/>
+                            <stop offset="50%" stop-color="#8B5CF6"/>
+                            <stop offset="100%" stop-color="#f472b6"/>
                         </linearGradient>
-                        <linearGradient id="logoLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stop-color="#fb923c"/>
-                            <stop offset="100%" stop-color="#7c3aed"/>
-                        </linearGradient>
+                        <filter id="logoGlow">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
                     </defs>
-                    <!-- S - serif style, big elegant curves -->
-                    <path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#logoGrad)"/>
-                    <!-- Serif curl on S -->
-                    <path d="M14 12 C12 14 10 13 9 11 C8 8 11 5 14 4" fill="url(#logoGrad)" opacity="0.9"/>
-                    <!-- t - serif -->
-                    <path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#logoGrad)"/>
-                    <rect x="44" y="16" width="14" height="3" rx="1" fill="url(#logoGrad)"/>
-                    <!-- e - serif elegant -->
-                    <path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#logoGrad)"/>
-                    <!-- y - serif with elegant tail -->
-                    <path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#logoGrad)"/>
-                    <path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#logoGrad)"/>
-                    <!-- Underline sweep -->
-                    <path d="M15 42 L95 42" stroke="url(#logoLine)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5">
-                        <animate attributeName="stroke-dasharray" values="0 100;80 100" dur="2s" fill="freeze"/>
-                    </path>
-                    <!-- Sparkles -->
-                    <path class="sparkle sparkle-1" d="M10 8 L11 5 L12 8 L15 9 L12 10 L11 13 L10 10 L7 9 Z" fill="#d946ef" opacity="0.8">
-                        <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>
-                        <animateTransform attributeName="transform" type="scale" values="1;0.7;1" dur="2s" repeatCount="indefinite" additive="sum"/>
-                    </path>
-                    <path class="sparkle sparkle-2" d="M105 6 L106 3 L107 6 L110 7 L107 8 L106 11 L105 8 L102 7 Z" fill="#f472b6" opacity="0.7">
-                        <animate attributeName="opacity" values="0.7;0.3;0.7" dur="2.5s" repeatCount="indefinite"/>
-                        <animateTransform attributeName="transform" type="scale" values="1;0.6;1" dur="2.5s" repeatCount="indefinite" additive="sum"/>
-                    </path>
-                    <!-- Dot -->
-                    <circle cx="108" cy="36" r="3" fill="#fb923c">
-                        <animate attributeName="r" values="3;4;3" dur="1.5s" repeatCount="indefinite"/>
+                    <!-- Glitch offset on S -->
+                    <text x="2" y="33" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="800" fill="#fb923c" opacity="0.15" letter-spacing="-1">S</text>
+                    <text x="6" y="31" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="800" fill="#38bdf8" opacity="0.1" letter-spacing="-1">S</text>
+                    <!-- Main S gradient -->
+                    <text x="4" y="32" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="800" fill="url(#logoGrad)" letter-spacing="-1" filter="url(#logoGlow)">S</text>
+                    <!-- tey in white -->
+                    <text x="28" y="32" font-family="'Space Grotesk', sans-serif" font-size="32" font-weight="600" fill="#F5F5F7" letter-spacing="-0.5">tey</text>
+                    <!-- Code hint -->
+                    <text x="86" y="16" font-family="'JetBrains Mono', monospace" font-size="10" fill="#8B5CF6" opacity="0.5">&lt;/&gt;</text>
+                    <!-- Orange dot -->
+                    <circle cx="96" cy="32" r="4" fill="#fb923c">
+                        <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                        <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
                     </circle>
+                    <!-- Blinking cursor -->
+                    <rect x="104" y="18" width="2" height="16" rx="1" fill="var(--pink)">
+                        <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+                    </rect>
+                    <!-- Underline -->
+                    <line x1="4" y1="38" x2="100" y2="38" stroke="url(#logoGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0.25">
+                        <animate attributeName="x2" values="4;100" dur="1.5s" fill="freeze"/>
+                    </line>
                 </svg>
             </a>
             <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projets">Projets</a></li>
                 <li><a href="#processus">Processus</a></li>
@@ -134,6 +135,7 @@
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <ul>
+            <li><a href="#about">À propos</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#projets">Projets</a></li>
             <li><a href="#processus">Processus</a></li>
@@ -151,7 +153,7 @@
             <div class="hero-left" data-animate="fade-up">
                 <div class="hero-status">
                     <span class="status-dot"></span>
-                    Disponible pour de nouveaux projets
+                    Disponible — prochain créneau libre sous ~3 jours
                 </div>
                 <h1 class="hero-title">
                     Salut, moi c'est Stey.<br>
@@ -161,7 +163,7 @@
                         <span class="typed-cursor">|</span>
                     </span>
                 </h1>
-                <p class="hero-desc">Passionné par le web et le digital, je transforme vos idées en pixels qui claquent. Site, script, automatisation — je m'occupe de tout pendant que vous vous occupez de votre business.</p>
+                <p class="hero-desc">Passionné par le web et le digital, je transforme vos idées en pixels qui claquent. Site, bot Discord, script, automatisation — je m'occupe de tout pendant que vous vous occupez de votre business.</p>
                 <div class="hero-actions">
                     <a href="#projets" class="btn btn-primary">
                         Voir mes projets
@@ -171,8 +173,8 @@
                 </div>
                 <div class="hero-stats">
                     <div class="hero-stat">
-                        <span class="stat-number" data-target="1">0</span>
-                        <span class="stat-label">Projet réalisé</span>
+                        <span class="stat-number" data-target="2">0</span>
+                        <span class="stat-label">Projets réalisés</span>
                     </div>
                     <div class="hero-stat">
                         <span class="stat-number" data-target="24">0</span><span class="stat-unit">h</span>
@@ -192,18 +194,7 @@
                         <span class="code-dot green"></span>
                         <span class="code-filename">stey.config.js</span>
                     </div>
-                    <div class="code-body">
-                        <span class="code-line"><span class="code-keyword">const</span> <span class="code-var">stey</span> = {</span>
-                        <span class="code-line">  <span class="code-prop">mood</span>: <span class="code-string">'cafféiné'</span>,</span>
-                        <span class="code-line">  <span class="code-prop">dispo</span>: <span class="code-bool">true</span>,</span>
-                        <span class="code-line">  <span class="code-prop">délai</span>: <span class="code-string">'rapide (genre vraiment)'</span>,</span>
-                        <span class="code-line">  <span class="code-prop">prix</span>: <span class="code-string">'honnête'</span>,</span>
-                        <span class="code-line">  <span class="code-prop">café</span>: <span class="code-var">Infinity</span>,</span>
-                        <span class="code-line">};</span>
-                        <span class="code-line"></span>
-                        <span class="code-line"><span class="code-comment">// si vous lisez ça, vous êtes au bon endroit</span></span>
-                        <span class="code-line"><span class="code-keyword">export default</span> stey;</span>
-                    </div>
+                    <div class="code-body" id="hero-code-body"></div>
                 </div>
             </div>
         </div>
@@ -215,10 +206,98 @@
 
     <!-- Wave divider -->
     <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C360,120 720,0 1080,80 C1260,100 1380,40 1440,60 L1440,120 L0,120 Z" fill="#141418"/></svg>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C360,120 720,0 1080,80 C1260,100 1380,40 1440,60 L1440,120 L0,120 Z" fill="#0a0a12"/></svg>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-head" data-animate="fade-up">
+                <span class="section-tag">À propos</span>
+                <h2>Le dev derrière le code</h2>
+                <p>Pas de blabla corporate. Juste moi.</p>
+            </div>
+            <div class="about-grid" data-animate="fade-up">
+                <div class="about-avatar">
+                    <svg class="about-avatar-svg" viewBox="0 0 200 200" width="140" height="140" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="avatarGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#8B5CF6"/>
+                                <stop offset="50%" stop-color="#d946ef"/>
+                                <stop offset="100%" stop-color="#f472b6"/>
+                            </linearGradient>
+                            <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#1a1a2e"/>
+                                <stop offset="100%" stop-color="#0f0f18"/>
+                            </linearGradient>
+                            <linearGradient id="screenGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#8B5CF6" stop-opacity="0.4"/>
+                                <stop offset="100%" stop-color="#8B5CF6" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Background circle -->
+                        <circle cx="100" cy="100" r="98" fill="url(#avatarBg)" stroke="url(#avatarGrad)" stroke-width="2"/>
+                        <!-- Body/shoulders -->
+                        <ellipse cx="100" cy="185" rx="55" ry="35" fill="url(#avatarGrad)" opacity="0.9"/>
+                        <!-- Hoodie collar -->
+                        <path d="M70 160 Q100 175 130 160 Q125 170 100 175 Q75 170 70 160Z" fill="#7c3aed"/>
+                        <!-- Neck -->
+                        <rect x="90" y="135" width="20" height="20" rx="4" fill="#e0c8a8"/>
+                        <!-- Head -->
+                        <ellipse cx="100" cy="105" rx="38" ry="42" fill="#e0c8a8"/>
+                        <!-- Hair (brown mullet) -->
+                        <path d="M62 100 Q62 60 100 55 Q138 60 138 100 Q135 75 120 68 Q100 62 80 68 Q65 75 62 100Z" fill="#5c3a1e"/>
+                        <path d="M62 100 Q60 85 68 72 Q65 82 63 95Z" fill="#4a2e16"/>
+                        <path d="M138 100 Q140 85 132 72 Q135 82 137 95Z" fill="#4a2e16"/>
+                        <!-- Mullet back -->
+                        <path d="M58 95 Q55 110 58 140 Q62 155 68 158 Q60 148 58 130 Q57 115 60 100Z" fill="#5c3a1e"/>
+                        <path d="M142 95 Q145 110 142 140 Q138 155 132 158 Q140 148 142 130 Q143 115 140 100Z" fill="#5c3a1e"/>
+                        <path d="M62 105 Q58 120 60 145 Q63 152 66 155 Q60 140 62 120Z" fill="#4a2e16" opacity="0.6"/>
+                        <path d="M138 105 Q142 120 140 145 Q137 152 134 155 Q140 140 138 120Z" fill="#4a2e16" opacity="0.6"/>
+                        <!-- Top volume -->
+                        <path d="M68 68 Q80 48 100 50 Q120 48 132 68 Q125 55 100 52 Q75 55 68 68Z" fill="#6b441f"/>
+                        <!-- Eyes -->
+                        <ellipse cx="85" cy="108" rx="5" ry="5.5" fill="#1a1a28"/>
+                        <ellipse cx="115" cy="108" rx="5" ry="5.5" fill="#1a1a28"/>
+                        <circle cx="83" cy="106" r="1.5" fill="#fff"/>
+                        <circle cx="113" cy="106" r="1.5" fill="#fff"/>
+                        <!-- Eyebrows -->
+                        <path d="M77 98 Q85 94 93 97" stroke="#4a2e16" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <path d="M107 97 Q115 94 123 98" stroke="#4a2e16" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                        <!-- Smile -->
+                        <path d="M88 120 Q100 130 112 120" stroke="#c4956a" stroke-width="2" fill="none" stroke-linecap="round"/>
+                        <!-- Headphones -->
+                        <path d="M58 105 Q56 70 100 60 Q144 70 142 105" stroke="#3a3a4e" stroke-width="5" fill="none" stroke-linecap="round"/>
+                        <rect x="49" y="98" width="14" height="22" rx="7" fill="#3a3a4e"/>
+                        <rect x="137" y="98" width="14" height="22" rx="7" fill="#3a3a4e"/>
+                        <rect x="51" y="100" width="10" height="18" rx="5" fill="url(#avatarGrad)"/>
+                        <rect x="139" y="100" width="10" height="18" rx="5" fill="url(#avatarGrad)"/>
+                        <!-- Screen glow reflection on face -->
+                        <ellipse cx="100" cy="115" rx="30" ry="20" fill="url(#screenGlow)" opacity="0.3"/>
+                    </svg>
+                </div>
+                <div class="about-text">
+                    <p>Moi c'est <strong>Stey</strong>, développeur web & digital freelance. Passionné de code et de gaming depuis des années, j'ai commencé à coder pour mes propres projets avant de réaliser que je pouvais aider les autres avec.</p>
+                    <p>Aujourd'hui, je crée des sites, des bots Discord, des scripts et des automatisations. Mon truc : écouter ce que vous voulez vraiment, pas ce que je pense que vous devriez vouloir. Résultat : des clients contents et des projets qui tiennent la route.</p>
+                    <div class="about-facts">
+                        <div class="about-fact"><span class="fact-icon">🇫🇷</span> Basé en France</div>
+                        <div class="about-fact"><span class="fact-icon">⚡</span> Réponse sous 24h</div>
+                        <div class="about-fact"><span class="fact-icon">🎯</span> Freelance dédié</div>
+                        <div class="about-fact"><span class="fact-icon">💻</span> Full-stack</div>
+                        <div class="about-fact"><span class="fact-icon">🎮</span> Gamer & dev</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wave divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,50 C300,100 600,10 900,70 C1100,110 1300,30 1440,50 L1440,120 L0,120 Z" fill="#0d0d15"/></svg>
     </div>
 
     <!-- Services -->
+
     <section class="services" id="services">
         <div class="container">
             <div class="section-head" data-animate="fade-up">
@@ -234,131 +313,44 @@
                     <h3>Sites Web</h3>
                     <p>Votre vitrine en ligne, pensée de A à Z. Je pars de votre idée et je livre un site qui vous ressemble — design moderne, rapide, responsive, et visible sur Google. Pas de template réchauffé, que du sur-mesure.</p>
                     <div class="srv-tags"><span>Vitrine</span><span>E-commerce</span><span>Landing</span><span>SEO</span></div>
+                    <a href="sites-web.html" class="srv-more">En savoir plus <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
                 <div class="srv-card">
                     <div class="srv-emoji">🎮</div>
                     <h3>Scripts FiveM</h3>
                     <p>Joueur RP moi-même, je connais ce qui fait un bon serveur. HUD clean, jobs immersifs, garage système, menus NUI — tout en Lua/JS optimisé pour zéro lag même à 200 joueurs.</p>
                     <div class="srv-tags"><span>HUD</span><span>Jobs</span><span>Garage</span><span>NUI</span></div>
+                    <a href="scripts-fivem.html" class="srv-more">En savoir plus <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                </div>
+                <div class="srv-card">
+                    <div class="srv-emoji">🤖</div>
+                    <h3>Bots Discord</h3>
+                    <p>Votre serveur mérite mieux qu'un bot générique. Modération, tickets, leveling, giveaways, musique — je code des bots sur mesure qui font exactement ce que vous voulez.</p>
+                    <div class="srv-tags"><span>Modération</span><span>Tickets</span><span>Leveling</span><span>Custom</span></div>
+                    <a href="bots-discord.html" class="srv-more">En savoir plus <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
                 <div class="srv-card">
                     <div class="srv-emoji">⚙️</div>
                     <h3>Automatisations</h3>
                     <p>Vous passez 2h par jour sur des tâches qu'un script peut faire en 2 secondes ? Je connecte vos outils entre eux : CRM, mails, factures, réseaux sociaux — tout roule tout seul.</p>
                     <div class="srv-tags"><span>API</span><span>Webhooks</span><span>n8n</span><span>Zapier</span></div>
+                    <a href="automatisations.html" class="srv-more">En savoir plus <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
                 <div class="srv-card">
                     <div class="srv-emoji">📈</div>
                     <h3>SEO & Maintenance</h3>
                     <p>Un site sans visiteurs c'est un magasin sans porte. Je m'occupe du référencement Google, des mises à jour, de la sécu et du support — pour que votre site reste au top sans que vous y pensiez.</p>
                     <div class="srv-tags"><span>Google</span><span>Analytics</span><span>Mises à jour</span><span>Support</span></div>
+                    <a href="seo-maintenance.html" class="srv-more">En savoir plus <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                 </div>
             </div>
         </div>
+        <div class="services-nav" id="services-nav"></div>
     </section>
 
     <!-- Wave divider -->
     <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,80 C240,20 480,100 720,60 C960,20 1200,90 1440,50 L1440,120 L0,120 Z" fill="#111115"/></svg>
-    </div>
-
-    <!-- Why me -->
-    <section class="why-me">
-        <div class="container">
-            <div class="section-head" data-animate="fade-up">
-                <span class="section-tag">Pourquoi moi</span>
-                <h2>Ce qui fait la différence</h2>
-                <p>Au-delà du code, voilà pourquoi mes clients reviennent (et me recommandent).</p>
-            </div>
-            <div class="why-grid">
-                <div class="why-card" data-animate="fade-up" data-delay="0">
-                    <div class="why-number">01</div>
-                    <h3>Rapide, genre vraiment</h3>
-                    <p>Votre site en quelques jours, pas en 3 mois. Je code vite et bien — votre business n'attend pas, moi non plus.</p>
-                    <div class="why-accent"></div>
-                </div>
-                <div class="why-card" data-animate="fade-up" data-delay="100">
-                    <div class="why-number">02</div>
-                    <h3>Je parle humain</h3>
-                    <p>Pas de jargon technique incompréhensible. On discute normalement, vous comprenez tout, vous décidez de tout.</p>
-                    <div class="why-accent"></div>
-                </div>
-                <div class="why-card" data-animate="fade-up" data-delay="200">
-                    <div class="why-number">03</div>
-                    <h3>Design sur mesure</h3>
-                    <p>Zéro template réchauffé. Chaque pixel est pensé pour VOTRE image, VOTRE identité. Du unique, du vrai.</p>
-                    <div class="why-accent"></div>
-                </div>
-                <div class="why-card" data-animate="fade-up" data-delay="300">
-                    <div class="why-number">04</div>
-                    <h3>Fiable dans le temps</h3>
-                    <p>Code propre, site rapide, hébergement solide. Je disparais pas après le paiement — support inclus.</p>
-                    <div class="why-accent"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wave divider -->
-    <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,40 C360,100 720,20 1080,70 C1260,90 1380,30 1440,40 L1440,120 L0,120 Z" fill="#0e0e12"/></svg>
-    </div>
-
-    <!-- Tech Stack -->
-    <section class="tech-section" id="tech">
-        <div class="container">
-            <div class="section-head" data-animate="fade-up">
-                <span class="section-tag">Technologies</span>
-                <h2>Mes armes du quotidien</h2>
-                <p>Chaque outil a été choisi au combat. Pas de hype, que de l'efficace.</p>
-            </div>
-        </div>
-        <div class="tech-slider">
-            <div class="tech-track">
-                <div class="tech-item"><span class="tech-icon">&#60;/&#62;</span><span>HTML5</span></div>
-                <div class="tech-item"><span class="tech-icon">#</span><span>CSS3</span></div>
-                <div class="tech-item"><span class="tech-icon">JS</span><span>JavaScript</span></div>
-                <div class="tech-item"><span class="tech-icon">Py</span><span>Python</span></div>
-                <div class="tech-item"><span class="tech-icon">N</span><span>Node.js</span></div>
-                <div class="tech-item"><span class="tech-icon">Lua</span><span>Lua</span></div>
-                <div class="tech-item"><span class="tech-icon">⚛</span><span>React</span></div>
-                <div class="tech-item"><span class="tech-icon">D</span><span>Discord.js</span></div>
-                <div class="tech-item"><span class="tech-icon">G</span><span>Git</span></div>
-                <div class="tech-item"><span class="tech-icon">F</span><span>Figma</span></div>
-                <!-- Duplicate for infinite loop -->
-                <div class="tech-item"><span class="tech-icon">&#60;/&#62;</span><span>HTML5</span></div>
-                <div class="tech-item"><span class="tech-icon">#</span><span>CSS3</span></div>
-                <div class="tech-item"><span class="tech-icon">JS</span><span>JavaScript</span></div>
-                <div class="tech-item"><span class="tech-icon">Py</span><span>Python</span></div>
-                <div class="tech-item"><span class="tech-icon">N</span><span>Node.js</span></div>
-                <div class="tech-item"><span class="tech-icon">Lua</span><span>Lua</span></div>
-                <div class="tech-item"><span class="tech-icon">⚛</span><span>React</span></div>
-                <div class="tech-item"><span class="tech-icon">D</span><span>Discord.js</span></div>
-                <div class="tech-item"><span class="tech-icon">G</span><span>Git</span></div>
-                <div class="tech-item"><span class="tech-icon">F</span><span>Figma</span></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fun code snippet -->
-    <section class="fun-section">
-        <div class="container">
-            <div class="fun-snippet" data-animate="fade-up">
-                <div class="snippet-code">
-                    <span class="code-keyword">if</span> (client.happy) {<br>
-                    &nbsp;&nbsp;<span class="code-func">celebrate</span>();<br>
-                    } <span class="code-keyword">else</span> {<br>
-                    &nbsp;&nbsp;<span class="code-func">refaireTout</span>(<span class="code-string">'gratuitement'</span>);<br>
-                    }
-                </div>
-                <p class="snippet-caption">Spoiler : le else s'est jamais exécuté.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wave divider -->
-    <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,70 C200,30 400,100 600,50 C800,0 1000,80 1200,40 C1320,20 1400,60 1440,70 L1440,120 L0,120 Z" fill="#161619"/></svg>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,70 C200,30 400,100 600,50 C800,0 1000,80 1200,40 C1320,20 1400,60 1440,70 L1440,120 L0,120 Z" fill="#0f0f18"/></svg>
     </div>
 
     <!-- Projects -->
@@ -366,10 +358,10 @@
         <div class="container">
             <div class="section-head" data-animate="fade-up">
                 <span class="section-tag">Portfolio</span>
-                <h2>Un projet, une histoire</h2>
-                <p>Mon premier client — et le début de l'aventure.</p>
+                <h2>Chaque projet, une histoire</h2>
+                <p>Des vrais clients, des vrais résultats.</p>
             </div>
-            <div class="project-showcase" data-animate="fade-up">
+            <div class="projects-grid" data-animate="fade-up">
                 <div class="project-card-big">
                     <div class="project-img" style="background:linear-gradient(135deg,rgba(201,169,110,0.4),rgba(139,115,85,0.4)),url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80') center/cover;"></div>
                     <div class="project-overlay">
@@ -377,22 +369,40 @@
                     </div>
                     <div class="project-details">
                         <span class="project-cat">Site Vitrine — Institut Bien-être</span>
-                        <h3>Cher à mon âme — Head Spa & Massages</h3>
-                        <p>Site vitrine professionnel pour un institut de bien-être à Mont-de-Marsan. Design premium sombre et élégant, animations avancées, prestations détaillées avec tarifs, réservation Planity intégrée, référencement local Google (SEO), responsive mobile.</p>
+                        <h3>Cher à mon âme — Head Spa</h3>
+                        <p>Site vitrine professionnel pour un institut de bien-être. Design premium sombre, animations avancées, réservation Planity intégrée, SEO local Google.</p>
                         <div class="project-tech">
-                            <span>HTML/CSS</span><span>JavaScript</span><span>SEO local</span><span>Animations</span><span>Responsive</span><span>Schema.org</span>
+                            <span>HTML/CSS</span><span>JavaScript</span><span>SEO local</span><span>Animations</span>
                         </div>
                         <a href="https://cher-a-mon-ame.github.io" target="_blank" rel="noopener" class="btn btn-project">
-                            Voir le site en ligne
+                            Voir le site
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                         </a>
                     </div>
                 </div>
+                <div class="project-card-big">
+                    <div class="project-img" style="background:linear-gradient(135deg,rgba(88,101,242,0.3),rgba(114,137,218,0.3)),linear-gradient(135deg,#1a1a2e,#16213e);"></div>
+                    <div class="project-overlay">
+                        <span class="project-badge">Client réel</span>
+                    </div>
+                    <div class="project-details">
+                        <span class="project-cat">Bots Discord — Serveur Communautaire</span>
+                        <h3>Crow Bots — Requiem</h3>
+                        <p>Deux bots Discord complets. Atlas (staff) : modération, tickets, MP globaux. Iris (communauté) : leveling, giveaways, stats vocales, annonces auto.</p>
+                        <div class="project-tech">
+                            <span>Node.js</span><span>Discord.js</span><span>Python</span><span>SQLite</span>
+                        </div>
+                        <a href="#contact" class="btn btn-project">
+                            Un bot comme ça ?
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <p class="projects-note" data-animate="fade-up">Et votre projet sera le prochain sur cette page. On commence quand ?</p>
+            <p class="projects-note" data-animate="fade-up">Et votre projet sera le prochain ici. On commence quand ?</p>
 
-            <!-- Témoignage -->
-            <div class="testimonial" data-animate="fade-up">
+            <!-- Témoignages -->
+            <div class="testimonials-grid" data-animate="fade-up">
                 <div class="testimonial-card">
                     <div class="testimonial-quote">"</div>
                     <p class="testimonial-text">Stey a parfaitement compris ce que je voulais pour mon site. Résultat au-dessus de mes attentes, livré rapidement, avec un vrai suivi. Je recommande à 100%.</p>
@@ -404,124 +414,24 @@
                         </div>
                     </div>
                 </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">Les deux bots sont exactement ce qu'il fallait pour le serveur. Modération au point, leveling nickel, zéro bug. Réactif et à l'écoute, je recommande.</p>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">R</div>
+                        <div>
+                            <strong>Requiem</strong>
+                            <span>Serveur Discord communautaire</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Wave divider -->
     <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,50 C300,100 600,10 900,70 C1100,110 1300,30 1440,60 L1440,120 L0,120 Z" fill="#111115"/></svg>
-    </div>
-
-    <!-- Skills showcase -->
-    <section class="skills-section">
-        <div class="container">
-            <div class="section-head" data-animate="fade-up">
-                <span class="section-tag">Savoir-faire</span>
-                <h2>Pas que du code (mais beaucoup quand même)</h2>
-                <p>Design, technique, communication — le triptyque d'un projet qui claque.</p>
-            </div>
-            <div class="skills-grid">
-                <div class="skill-item" data-animate="fade-up" data-delay="0">
-                    <div class="skill-header">
-                        <span class="skill-name">Design UI/UX</span>
-                        <span class="skill-pct">90%</span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                </div>
-                <div class="skill-item" data-animate="fade-up" data-delay="60">
-                    <div class="skill-header">
-                        <span class="skill-name">Front-end (HTML/CSS/JS)</span>
-                        <span class="skill-pct">95%</span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
-                </div>
-                <div class="skill-item" data-animate="fade-up" data-delay="120">
-                    <div class="skill-header">
-                        <span class="skill-name">Animations & Interactions</span>
-                        <span class="skill-pct">85%</span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                </div>
-                <div class="skill-item" data-animate="fade-up" data-delay="180">
-                    <div class="skill-header">
-                        <span class="skill-name">Back-end (Node.js/Python)</span>
-                        <span class="skill-pct">80%</span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="80"></div></div>
-                </div>
-                <div class="skill-item" data-animate="fade-up" data-delay="240">
-                    <div class="skill-header">
-                        <span class="skill-name">SEO & Référencement</span>
-                        <span class="skill-pct">85%</span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
-                </div>
-                <div class="skill-item" data-animate="fade-up" data-delay="300">
-                    <div class="skill-header">
-                        <span class="skill-name">Bots & Automatisation</span>
-                        <span class="skill-pct">90%</span>
-                    </div>
-                    <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
-                </div>
-            </div>
-            <!-- Fun skills badges -->
-            <div class="bonus-skills" data-animate="fade-up">
-                <span class="bonus-badge">🎮 Scripts FiveM</span>
-                <span class="bonus-badge">🤖 Discord.js</span>
-                <span class="bonus-badge">📱 Responsive</span>
-                <span class="bonus-badge">⚡ Performance</span>
-                <span class="bonus-badge">🎨 Figma</span>
-                <span class="bonus-badge">🔧 Git/GitHub</span>
-                <span class="bonus-badge">🌐 Hébergement</span>
-                <span class="bonus-badge">💎 Pixel Perfect</span>
-                <span class="bonus-badge">☕ Café → Code</span>
-                <span class="bonus-badge">🌙 Debug nocturne</span>
-                <span class="bonus-badge">🧠 Résolution de problèmes</span>
-                <span class="bonus-badge">💬 Communication claire</span>
-            </div>
-            <!-- Real stats humour -->
-            <div class="real-stats" data-animate="fade-up">
-                <div class="real-stat">
-                    <span class="real-stat-number" data-target="347">0</span>
-                    <span class="real-stat-label">cafés bus cette année</span>
-                </div>
-                <div class="real-stat">
-                    <span class="real-stat-number" data-target="12847">0</span>
-                    <span class="real-stat-label">lignes de code écrites</span>
-                </div>
-                <div class="real-stat">
-                    <span class="real-stat-number" data-target="89">0</span>
-                    <span class="real-stat-label">bugs squashés (et 3 créés)</span>
-                </div>
-                <div class="real-stat">
-                    <span class="real-stat-number" data-target="∞">0</span>
-                    <span class="real-stat-label">onglets Stack Overflow ouverts</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fun snippet between skills and process -->
-    <section class="fun-section">
-        <div class="container">
-            <div class="fun-snippet" data-animate="fade-up">
-                <div class="snippet-code">
-                    <span class="code-keyword">const</span> motivation = [<br>
-                    &nbsp;&nbsp;<span class="code-string">'passion'</span>,<br>
-                    &nbsp;&nbsp;<span class="code-string">'café'</span>,<br>
-                    &nbsp;&nbsp;<span class="code-string">'deadline demain'</span><br>
-                    ];<br>
-                    <span class="code-comment">// les 3 piliers de la productivité</span>
-                </div>
-                <p class="snippet-caption">Dans cet ordre. Ou pas.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Wave divider -->
-    <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,90 C240,30 480,100 720,50 C960,0 1200,80 1440,40 L1440,120 L0,120 Z" fill="#141418"/></svg>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,90 C240,30 480,100 720,50 C960,0 1200,80 1440,40 L1440,120 L0,120 Z" fill="#0d0d15"/></svg>
     </div>
 
     <!-- Process -->
@@ -577,25 +487,9 @@
         </div>
     </section>
 
-    <!-- Fun snippet between process and pricing -->
-    <section class="fun-section">
-        <div class="container">
-            <div class="fun-snippet wide" data-animate="fade-up">
-                <div class="snippet-code">
-                    <span class="code-keyword">while</span> (!projet.parfait) {<br>
-                    &nbsp;&nbsp;projet.<span class="code-func">améliorer</span>();<br>
-                    &nbsp;&nbsp;café++;<br>
-                    }
-                </div>
-                <p class="snippet-caption">Ma boucle préférée. Le café est inclus dans le devis.</p>
-            </div>
-        </div>
-    </section>
-
-
     <!-- Wave divider -->
     <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,30 C360,100 720,10 1080,70 C1260,100 1380,50 1440,30 L1440,120 L0,120 Z" fill="#0f0f13"/></svg>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,30 C360,100 720,10 1080,70 C1260,100 1380,50 1440,30 L1440,120 L0,120 Z" fill="#0b0b13"/></svg>
     </div>
 
     <!-- Pricing -->
@@ -621,7 +515,7 @@
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Livraison rapide</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Hébergement gratuit inclus</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline-card">Demander un devis</a>
+                    <a href="#contact" class="btn btn-outline-card" data-select="site-vitrine">Demander un devis</a>
                 </div>
                 <div class="pricing-card popular" data-animate="fade-up" data-delay="100">
                     <div class="popular-badge">Populaire</div>
@@ -638,12 +532,12 @@
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Google Analytics</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support 30 jours inclus</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary-card">Demander un devis</a>
+                    <a href="#contact" class="btn btn-primary-card" data-select="site-vitrine">Demander un devis</a>
                 </div>
                 <div class="pricing-card" data-animate="fade-up" data-delay="200">
                     <div class="pricing-header">
-                        <h3>Script / Auto</h3>
-                        <p>Script FiveM ou automatisation sur mesure</p>
+                        <h3>Bot / Script / Auto</h3>
+                        <p>Bot Discord, script FiveM ou automatisation</p>
                     </div>
                     <div class="pricing-price"><span class="price-amount">Sur devis</span></div>
                     <ul class="pricing-features">
@@ -654,28 +548,15 @@
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Livraison 24-72h</li>
                         <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>Support après livraison</li>
                     </ul>
-                    <a href="#contact" class="btn btn-outline-card">Demander un devis</a>
+                    <a href="#contact" class="btn btn-outline-card" data-select="bot-discord">Demander un devis</a>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Fun snippet before contact -->
-    <section class="fun-section">
-        <div class="container">
-            <div class="fun-snippet" data-animate="fade-up">
-                <div class="snippet-code">
-                    <span class="code-keyword">const</span> devis = <span class="code-func">calculerPrix</span>(projet);<br>
-                    client.<span class="code-func">sourire</span>(); <span class="code-comment">// toujours</span>
-                </div>
-                <p class="snippet-caption">Le code est propre, le prix aussi.</p>
             </div>
         </div>
     </section>
 
     <!-- Wave divider -->
     <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C200,100 500,20 750,70 C1000,120 1200,30 1440,60 L1440,120 L0,120 Z" fill="#141418"/></svg>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,60 C200,100 500,20 750,70 C1000,120 1200,30 1440,60 L1440,120 L0,120 Z" fill="#0d0d15"/></svg>
     </div>
 
     <!-- FAQ section -->
@@ -691,6 +572,7 @@
                     <div class="faq-question">
                         <span class="faq-icon">?</span>
                         <h3>Tu travailles le week-end ?</h3>
+                        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <p class="faq-answer">Mon clavier ne sait pas quel jour on est. Et moi non plus parfois.</p>
                 </div>
@@ -698,6 +580,7 @@
                     <div class="faq-question">
                         <span class="faq-icon">?</span>
                         <h3>Pourquoi "sur devis" partout ?</h3>
+                        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <p class="faq-answer">Parce que votre projet est unique. Un prix fixe pour un truc custom, c'est comme acheter des chaussures sans connaître la pointure.</p>
                 </div>
@@ -705,6 +588,7 @@
                     <div class="faq-question">
                         <span class="faq-icon">?</span>
                         <h3>Tu peux modifier après livraison ?</h3>
+                        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <p class="faq-answer">Bien sûr. Je ne disparais pas une fois le paiement reçu. (Contrairement à certains freelances qu'on ne nommera pas.)</p>
                 </div>
@@ -712,6 +596,7 @@
                     <div class="faq-question">
                         <span class="faq-icon">?</span>
                         <h3>Et si le résultat me plaît pas ?</h3>
+                        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <p class="faq-answer">On modifie jusqu'à ce que vous kiffez. Satisfaction client > mon ego.</p>
                 </div>
@@ -719,6 +604,7 @@
                     <div class="faq-question">
                         <span class="faq-icon">?</span>
                         <h3>C'est quoi ta stack préférée ?</h3>
+                        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <p class="faq-answer">Celle qui marche le mieux pour VOTRE projet. Pas de dogme, juste du pragmatisme (et du café).</p>
                 </div>
@@ -726,6 +612,7 @@
                     <div class="faq-question">
                         <span class="faq-icon">?</span>
                         <h3>Tu fais aussi le design ?</h3>
+                        <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                     <p class="faq-answer">Oui. Design + code + déploiement. Un seul interlocuteur, zéro prise de tête.</p>
                 </div>
@@ -733,25 +620,9 @@
         </div>
     </section>
 
-    <!-- Fun snippet before contact 2 -->
-    <section class="fun-section">
-        <div class="container">
-            <div class="fun-snippet wide" data-animate="fade-up">
-                <div class="snippet-code">
-                    <span class="code-keyword">try</span> {<br>
-                    &nbsp;&nbsp;<span class="code-func">envoyerMessage</span>(<span class="code-string">'Stey'</span>);<br>
-                    } <span class="code-keyword">catch</span> (e) {<br>
-                    &nbsp;&nbsp;<span class="code-comment">// ça n'arrive jamais, le formulaire marche</span><br>
-                    }
-                </div>
-                <p class="snippet-caption">Le seul try/catch de ma vie sans erreur.</p>
-            </div>
-        </div>
-    </section>
-
     <!-- Wave divider -->
     <div class="wave-divider">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,50 C360,100 720,20 1080,80 C1200,100 1350,40 1440,50 L1440,120 L0,120 Z" fill="#111115"/></svg>
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none"><path d="M0,50 C360,100 720,20 1080,80 C1200,100 1350,40 1440,50 L1440,120 L0,120 Z" fill="#08080D"/></svg>
     </div>
 
     <!-- Contact -->
@@ -765,6 +636,7 @@
             <div class="contact-grid">
                 <div class="contact-form-wrapper" data-animate="fade-up">
                     <form class="contact-form" id="contact-form">
+                        <input type="checkbox" name="botcheck" style="display:none">
                         <div class="form-row">
                             <div class="form-group">
                                 <label>Nom / Pseudo</label>
@@ -775,21 +647,34 @@
                                 <input type="email" name="email" placeholder="votre@email.com" required>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>Type de projet</label>
-                            <select name="type" required>
-                                <option value="">Choisir...</option>
-                                <option value="site-vitrine">Site vitrine</option>
-                                <option value="site-ecommerce">Site e-commerce</option>
-                                <option value="script-fivem">Script FiveM</option>
-                                <option value="automatisation">Automatisation</option>
-                                <option value="seo">SEO & Maintenance</option>
-                                <option value="autre">Autre</option>
-                            </select>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Type de projet</label>
+                                <select name="type" required>
+                                    <option value="">Choisir...</option>
+                                    <option value="site-vitrine">Site vitrine</option>
+                                    <option value="site-ecommerce">Site e-commerce</option>
+                                    <option value="bot-discord">Bot Discord</option>
+                                    <option value="script-fivem">Script FiveM</option>
+                                    <option value="automatisation">Automatisation</option>
+                                    <option value="seo">SEO & Maintenance</option>
+                                    <option value="autre">Autre</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Budget estimé</label>
+                                <select name="budget">
+                                    <option value="">Pas encore défini</option>
+                                    <option value="<100">Moins de 100€</option>
+                                    <option value="100-300">100€ — 300€</option>
+                                    <option value="300-500">300€ — 500€</option>
+                                    <option value="500+">500€ et plus</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Décrivez votre projet</label>
-                            <textarea name="message" rows="5" placeholder="Décrivez ce que vous voulez, votre budget, vos délais..." required></textarea>
+                            <textarea name="message" rows="5" placeholder="Décrivez ce que vous voulez, vos délais, vos inspirations..." required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">
                             Envoyer le message
@@ -809,7 +694,7 @@
                             <div class="info-icon">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
                             </div>
-                            <div><strong>Discord</strong><p>Steykoz</p></div>
+                            <div><strong>Discord</strong><p><a href="https://discord.gg/bDhNg2dBJF" target="_blank" rel="noopener" class="info-link">Rejoindre le serveur</a></p></div>
                         </div>
                         <div class="info-item">
                             <div class="info-icon">
@@ -835,34 +720,17 @@
         </div>
     </section>
 
-    <!-- Easter egg before footer -->
-    <section class="easter-egg">
-        <div class="container">
-            <div class="egg-content" data-animate="fade-up">
-                <p class="egg-text">Vous êtes arrivé jusqu'ici ? Respect. <span class="egg-highlight">C'est la preuve que le site fonctionne.</span></p>
-                <p class="egg-sub">Maintenant imaginez ce que je peux faire pour le vôtre.</p>
-                <div class="egg-secret">
-                    <p class="egg-konami">Psst... essayez le Konami Code.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <svg class="logo-svg logo-animated" viewBox="0 0 160 50" width="110" height="36">
-                        <defs><linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d946ef"/><stop offset="40%" stop-color="#a855f7"/><stop offset="70%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#fb923c"/></linearGradient></defs>
-                        <path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#logoGrad2)"/>
-                        <path d="M14 12 C12 14 10 13 9 11 C8 8 11 5 14 4" fill="url(#logoGrad2)" opacity="0.9"/>
-                        <path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#logoGrad2)"/>
-                        <rect x="44" y="16" width="14" height="3" rx="1" fill="url(#logoGrad2)"/>
-                        <path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#logoGrad2)"/>
-                        <path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#logoGrad2)"/>
-                        <path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#logoGrad2)"/>
-                        <circle cx="108" cy="36" r="3" fill="#fb923c"/>
+                    <svg class="logo-svg" viewBox="0 0 140 44" width="110" height="35">
+                        <defs><linearGradient id="logoGrad2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d946ef"/><stop offset="50%" stop-color="#8B5CF6"/><stop offset="100%" stop-color="#f472b6"/></linearGradient></defs>
+                        <text x="2" y="33" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="800" fill="#fb923c" opacity="0.15" letter-spacing="-1">S</text>
+                        <text x="4" y="32" font-family="'Space Grotesk', sans-serif" font-size="36" font-weight="800" fill="url(#logoGrad2)" letter-spacing="-1">S</text>
+                        <text x="28" y="32" font-family="'Space Grotesk', sans-serif" font-size="32" font-weight="600" fill="#F5F5F7" letter-spacing="-0.5">tey</text>
+                        <circle cx="96" cy="32" r="4" fill="#fb923c"/>
                     </svg>
                     <p>Développeur web & digital freelance.<br>Solutions sur mesure pour vos projets.</p>
                 </div>
@@ -877,10 +745,17 @@
                     <a href="https://www.instagram.com/steykoz?igsi=eWhzMTg3czFrOG56&utm_source=qr" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
                     </a>
+                    <a href="https://discord.gg/bDhNg2dBJF" target="_blank" rel="noopener" aria-label="Discord" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    </a>
+                    <a href="https://github.com/Steykoz" target="_blank" rel="noopener" aria-label="GitHub" class="social-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                    </a>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2026 Stey. Tous droits réservés. Fait avec du code, du café et un peu de folie.</p>
+                <p class="footer-legal"><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Politique de confidentialité</a></p>
             </div>
         </div>
     </footer>
@@ -889,6 +764,23 @@
     <button class="back-to-top" id="back-to-top" aria-label="Retour en haut">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
     </button>
+
+    <!-- Discord floating widget -->
+    <a href="https://discord.gg/bDhNg2dBJF" target="_blank" rel="noopener" class="discord-widget" aria-label="Rejoindre le Discord">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.095 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+    </a>
+
+    <!-- Custom cursor -->
+    <div class="custom-cursor" id="custom-cursor"></div>
+
+    <!-- Mobile sticky CTA -->
+    <a href="#contact" class="mobile-cta" id="mobile-cta">
+        Demander un devis gratuit
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </a>
+
+    <!-- Form toast notification -->
+    <div class="form-toast" id="form-toast"></div>
 
     <script src="script.js"></script>
 </body>
