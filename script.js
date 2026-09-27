@@ -78,7 +78,7 @@ if (typedEl) setTimeout(type, 1000);
         '<span class="code-keyword">const</span> <span class="code-var">stey</span> = {',
         '  <span class="code-prop">mood</span>: <span class="code-string">\'cafféiné\'</span>,',
         '  <span class="code-prop">dispo</span>: <span class="code-bool">true</span>,',
-        '  <span class="code-prop">délai</span>: <span class="code-string">\'rapide (genre vraiment)\'</span>,',
+        '  <span class="code-prop">délai</span>: <span class="code-string">\'rapide\'</span>,',
         '  <span class="code-prop">prix</span>: <span class="code-string">\'honnête\'</span>,',
         '  <span class="code-prop">café</span>: <span class="code-var">Infinity</span>,',
         '};',
@@ -272,30 +272,6 @@ document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.obser
     srvObserver.observe(slider);
 })();
 
-(function() {
-    const slider = document.getElementById('services-slider');
-    const cards = document.querySelectorAll('.srv-card');
-    const nav = document.getElementById('services-nav');
-    if (!slider || !nav || !cards.length) return;
-
-    cards.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'services-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('aria-label', 'Service ' + (i + 1));
-        dot.addEventListener('click', () => {
-            cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        });
-        nav.appendChild(dot);
-    });
-
-    const dots = nav.querySelectorAll('.services-dot');
-    slider.addEventListener('scroll', () => {
-        const scrollLeft = slider.scrollLeft;
-        const cardWidth = cards[0].offsetWidth + 28;
-        const activeIndex = Math.round(scrollLeft / cardWidth);
-        dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
-    });
-})();
 
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
@@ -435,13 +411,10 @@ if (realStats) realStatsObserver.observe(realStats);
                 for (let i = 0; i < 50; i++) {
                     setTimeout(() => {
                         const spark = document.createElement('div');
-                        spark.className = 'cursor-sparkle';
-                        spark.style.left = Math.random() * window.innerWidth + 'px';
-                        spark.style.top = Math.random() * window.innerHeight + 'px';
-                        spark.style.background = ['#8B5CF6','#f472b6','#fb923c','#d946ef','#34d399'][Math.floor(Math.random() * 5)];
-                        spark.style.width = (Math.random() * 8 + 4) + 'px';
-                        spark.style.height = spark.style.width;
+                        const sz = (Math.random() * 8 + 4) + 'px';
+                        spark.style.cssText = `position:fixed;pointer-events:none;z-index:9998;border-radius:50%;left:${Math.random() * window.innerWidth}px;top:${Math.random() * window.innerHeight}px;width:${sz};height:${sz};background:${['#8B5CF6','#f472b6','#fb923c','#d946ef','#34d399'][Math.floor(Math.random() * 5)]};opacity:1;transition:opacity .5s,transform .5s;`;
                         document.body.appendChild(spark);
+                        requestAnimationFrame(() => { spark.style.opacity = '0'; spark.style.transform = 'scale(0) translateY(-20px)'; });
                         setTimeout(() => spark.remove(), 600);
                     }, i * 30);
                 }
@@ -452,36 +425,6 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
-(function() {
-    const cursor = document.getElementById('custom-cursor');
-    if (!cursor || !window.matchMedia('(pointer: fine)').matches) return;
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX + 'px';
-        cursor.style.top = e.clientY + 'px';
-    });
-    const interactiveEls = 'a, button, select, input, textarea, .srv-card, .pricing-card, .faq-item, .bonus-badge';
-    document.querySelectorAll(interactiveEls).forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-    });
-})();
-
-(function() {
-    let lastTime = 0;
-    const colors = ['#8B5CF6', '#f472b6', '#fb923c', '#d946ef'];
-    document.addEventListener('mousemove', (e) => {
-        const now = Date.now();
-        if (now - lastTime < 50) return;
-        lastTime = now;
-        const spark = document.createElement('div');
-        spark.className = 'cursor-sparkle';
-        spark.style.left = e.clientX + 'px';
-        spark.style.top = e.clientY + 'px';
-        spark.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(spark);
-        setTimeout(() => spark.remove(), 600);
-    });
-})();
 
 document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
