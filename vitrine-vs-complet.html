@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Vitrine vs Site Complet — Stey, Développeur Freelance</title>
+    <meta name="description" content="Quelle différence entre un site vitrine et un site complet ? Comparatif détaillé, fonctionnalités, et pour qui chaque option est faite.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="canonical" href="https://steykoz.github.io/vitrine-vs-complet.html">
+    <meta property="og:title" content="Site Vitrine vs Site Complet — Stey">
+    <meta property="og:description" content="Comparatif site vitrine et site complet. Lequel choisir pour votre projet ?">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#08080D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .service-page { padding: 140px 0 80px; }
+        .service-hero { text-align: center; margin-bottom: 80px; }
+        .service-hero h1 { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.8rem); font-weight: 700; margin-bottom: 16px; }
+        .service-hero p { color: var(--text2); max-width: 650px; margin: 0 auto; font-size: 1.05rem; line-height: 1.7; }
+        .service-back { display: inline-flex; align-items: center; gap: 8px; color: var(--purple); text-decoration: none; font-weight: 500; font-size: .9rem; margin-bottom: 40px; transition: color .2s; }
+        .service-back:hover { color: var(--pink); }
+        .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 80px; }
+        .compare-card { padding: 36px; border-radius: var(--radius); background: var(--glass); border: 1px solid var(--border); backdrop-filter: blur(8px); }
+        .compare-card.highlight { border-color: var(--purple); box-shadow: 0 8px 40px rgba(139,92,246,.15); }
+        .compare-card .card-badge { display: inline-block; font-size: .7rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; padding: 4px 12px; border-radius: 99px; margin-bottom: 20px; }
+        .compare-card:first-child .card-badge { background: rgba(244,114,182,.15); color: var(--pink); }
+        .compare-card.highlight .card-badge { background: rgba(139,92,246,.15); color: var(--purple); }
+        .compare-card h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 8px; }
+        .compare-card .card-desc { color: var(--text2); font-size: .9rem; line-height: 1.7; margin-bottom: 24px; }
+        .compare-card h3 { font-family: var(--font-head); font-size: .85rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--text2); margin-bottom: 16px; }
+        .feature-list { list-style: none; display: grid; gap: 10px; margin-bottom: 28px; }
+        .feature-list li { display: flex; align-items: flex-start; gap: 10px; font-size: .88rem; line-height: 1.6; }
+        .feature-list li svg { color: var(--green); flex-shrink: 0; margin-top: 3px; }
+        .ideal-for { padding: 20px; border-radius: var(--radius-sm); background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.05); }
+        .ideal-for h4 { font-family: var(--font-head); font-size: .9rem; font-weight: 600; margin-bottom: 10px; }
+        .ideal-for ul { list-style: none; display: grid; gap: 6px; }
+        .ideal-for ul li { font-size: .85rem; color: var(--text2); padding-left: 16px; position: relative; }
+        .ideal-for ul li::before { content: '→'; position: absolute; left: 0; color: var(--purple); }
+        .compare-table { max-width: 800px; margin: 0 auto 80px; }
+        .compare-table h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; text-align: center; }
+        .table-wrap { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); }
+        .table-wrap table { width: 100%; border-collapse: collapse; }
+        .table-wrap th, .table-wrap td { padding: 14px 20px; text-align: left; font-size: .88rem; border-bottom: 1px solid var(--border); }
+        .table-wrap th { background: rgba(139,92,246,.08); font-family: var(--font-head); font-weight: 600; font-size: .8rem; letter-spacing: 1px; text-transform: uppercase; }
+        .table-wrap td { background: rgba(255,255,255,.02); }
+        .table-wrap tr:last-child td { border-bottom: none; }
+        .table-wrap td:first-child { color: var(--text2); }
+        .check { color: var(--green); font-weight: 700; }
+        .cross { color: rgba(255,255,255,.2); }
+        .tldr { max-width: 700px; margin: 0 auto 80px; text-align: center; padding: 40px; border-radius: var(--radius); background: var(--glass); border: 1px solid var(--border); }
+        .tldr h2 { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; }
+        .tldr p { color: var(--text2); font-size: .95rem; line-height: 1.8; }
+        .tldr strong { color: var(--text); }
+        .service-cta { text-align: center; padding: 60px 0; }
+        .service-cta h2 { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px; }
+        .service-cta p { color: var(--text2); margin-bottom: 24px; }
+        @media (max-width: 768px) {
+            .compare-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="noise"></div>
+    <section class="service-page">
+        <div class="container">
+            <a href="index.html#tarifs" class="service-back">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                Retour aux tarifs
+            </a>
+
+            <div class="service-hero">
+                <h1>Site Vitrine vs Site Complet</h1>
+                <p>Deux offres, deux besoins différents. Voici ce qui les distingue concrètement pour que vous choisissiez celle qui correspond à votre projet.</p>
+            </div>
+
+            <div class="compare-grid">
+                <div class="compare-card">
+                    <span class="card-badge">Essentiel</span>
+                    <h2>Site Vitrine</h2>
+                    <p class="card-desc">Un site simple et efficace pour présenter votre activité en ligne. Idéal quand vous avez besoin d'une présence web pro sans fonctionnalités complexes.</p>
+
+                    <h3>Ce qui est inclus</h3>
+                    <ul class="feature-list">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Une page unique (one-page) ou quelques pages simples</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Design moderne et sur mesure</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Responsive mobile et tablette</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Optimisé pour Google (SEO de base)</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Formulaire de contact</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Hébergement gratuit inclus</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Livraison rapide</li>
+                    </ul>
+
+                    <div class="ideal-for">
+                        <h4>Idéal pour :</h4>
+                        <ul>
+                            <li>Artisans, commerces, indépendants</li>
+                            <li>Présenter ses services et ses coordonnées</li>
+                            <li>Être trouvé sur Google</li>
+                            <li>Un premier site simple et pro</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="compare-card highlight">
+                    <span class="card-badge">Avancé</span>
+                    <h2>Site Complet</h2>
+                    <p class="card-desc">Un site sur mesure avec des fonctionnalités avancées. Pour ceux qui veulent aller plus loin qu'une simple présentation et vraiment convertir leurs visiteurs.</p>
+
+                    <h3>Tout du site vitrine, plus :</h3>
+                    <ul class="feature-list">
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Multi-pages structurées (accueil, services, à propos, blog...)</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Animations avancées et transitions fluides</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Système de réservation ou prise de rendez-vous</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> E-commerce (catalogue, panier, paiement)</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Google Analytics et suivi des visiteurs</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> SEO avancé (balises structurées, sitemap, meta)</li>
+                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Support 30 jours après livraison</li>
+                    </ul>
+
+                    <div class="ideal-for">
+                        <h4>Idéal pour :</h4>
+                        <ul>
+                            <li>Entreprises qui veulent convertir en ligne</li>
+                            <li>Boutiques qui veulent vendre leurs produits</li>
+                            <li>Pros qui prennent des rendez-vous en ligne</li>
+                            <li>Projets qui demandent des fonctionnalités sur mesure</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="compare-table">
+                <h2>Comparatif rapide</h2>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fonctionnalité</th>
+                                <th>Site Vitrine</th>
+                                <th>Site Complet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Design sur mesure</td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Responsive mobile</td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>SEO de base</td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Formulaire de contact</td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Hébergement gratuit</td>
+                                <td><span class="check">✓</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Multi-pages</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Animations avancées</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Réservation / RDV</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>E-commerce</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Google Analytics</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>SEO avancé</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                            <tr>
+                                <td>Support 30 jours</td>
+                                <td><span class="cross">—</span></td>
+                                <td><span class="check">✓</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tldr">
+                <h2>En résumé</h2>
+                <p>Le <strong>site vitrine</strong> c'est votre carte de visite en ligne — simple, propre, efficace. Vous présentez qui vous êtes et ce que vous faites.<br><br>Le <strong>site complet</strong> c'est votre outil de travail — il ne se contente pas de montrer, il agit. Vos clients peuvent réserver, acheter, naviguer entre vos services. C'est un investissement qui travaille pour vous.</p>
+            </div>
+
+            <div class="service-cta">
+                <h2>Pas sûr de ce qu'il vous faut ?</h2>
+                <p>Décrivez-moi votre projet et je vous dirai quelle formule est la plus adaptée. Devis gratuit.</p>
+                <a href="index.html#contact" class="btn btn-primary">Demander un devis gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
