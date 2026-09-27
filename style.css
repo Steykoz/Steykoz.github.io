@@ -862,6 +862,9 @@ img { max-width: 100%; display: block; }
 
 .pricing { padding: 120px 0; }
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: start; }
+.pricing-hint { text-align: center; margin-top: 32px; font-size: .9rem; color: var(--text2); }
+.pricing-hint a { color: var(--purple); text-decoration: none; font-weight: 500; transition: color .2s; }
+.pricing-hint a:hover { color: var(--pink); }
 .pricing-card {
     background: var(--glass);
     border: 1px solid var(--border);
