@@ -1282,12 +1282,16 @@ img { max-width: 100%; display: block; }
     margin: 0 auto;
 }
 .about-avatar { display: flex; align-items: center; justify-content: center; }
-.about-avatar-svg {
+.about-avatar-img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
     filter: drop-shadow(0 8px 32px rgba(139,92,246,.3));
     animation: aboutPulse 4s ease-in-out infinite;
     transition: transform .3s;
 }
-.about-avatar-svg:hover {
+.about-avatar-img:hover {
     transform: scale(1.05);
 }
 @keyframes aboutPulse {
