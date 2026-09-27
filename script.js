@@ -11,13 +11,46 @@ window.addEventListener('load', () => {
 
 const header = document.getElementById('header');
 const scrollProgress = document.getElementById('scroll-progress');
-if (header && scrollProgress) {
-    window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (scrollTop / docHeight) * 100;
-        scrollProgress.style.width = progress + '%';
+const backToTop = document.getElementById('back-to-top');
+const mobileCta = document.getElementById('mobile-cta');
+const contactSection = document.getElementById('contact');
+const heroLeft = document.querySelector('.hero-left');
+const heroVisual = document.querySelector('.hero-visual');
+const heroHeight = window.innerHeight;
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+
+        if (header && scrollProgress) {
+            header.classList.toggle('scrolled', scrollY > 50);
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            scrollProgress.style.width = (scrollY / docHeight) * 100 + '%';
+        }
+
+        if (heroLeft && scrollY < heroHeight) {
+            heroLeft.style.transform = `translateY(${scrollY * 0.1}px)`;
+            heroVisual.style.transform = `translateY(${scrollY * 0.15}px)`;
+        }
+
+        if (backToTop) {
+            backToTop.classList.toggle('visible', scrollY > 500);
+            if (mobileCta) {
+                const contactTop = contactSection ? contactSection.getBoundingClientRect().top : Infinity;
+                mobileCta.classList.toggle('visible', scrollY > 400 && contactTop > heroHeight * 0.5);
+            }
+        }
+
+        ticking = false;
+    });
+}, { passive: true });
+
+if (backToTop) {
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 }
 
@@ -105,13 +138,14 @@ if (typedEl) setTimeout(type, 1000);
     const ctx = canvas.getContext('2d');
     let particles = [];
     let w, h;
+    let animRunning = true;
 
     function resize() {
         w = canvas.width = canvas.offsetWidth;
         h = canvas.height = canvas.offsetHeight;
     }
     resize();
-    window.addEventListener('resize', resize);
+    window.addEventListener('resize', resize, { passive: true });
 
     const colors = ['rgba(139,92,246,', 'rgba(244,114,182,', 'rgba(251,146,60,', 'rgba(255,255,255,'];
     for (let i = 0; i < 40; i++) {
@@ -126,6 +160,7 @@ if (typedEl) setTimeout(type, 1000);
     }
 
     function animate() {
+        if (!animRunning) return;
         ctx.clearRect(0, 0, w, h);
         particles.forEach(p => {
             p.x += p.vx;
@@ -143,18 +178,30 @@ if (typedEl) setTimeout(type, 1000);
             for (let j = i + 1; j < particles.length; j++) {
                 const dx = particles[i].x - particles[j].x;
                 const dy = particles[i].y - particles[j].y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                if (dist < 120) {
+                const dist = dx * dx + dy * dy;
+                if (dist < 14400) {
                     ctx.beginPath();
                     ctx.moveTo(particles[i].x, particles[i].y);
                     ctx.lineTo(particles[j].x, particles[j].y);
-                    ctx.strokeStyle = 'rgba(244,114,182,' + (1 - dist / 120) * 0.12 + ')';
+                    ctx.strokeStyle = 'rgba(244,114,182,' + (1 - Math.sqrt(dist) / 120) * 0.12 + ')';
                     ctx.stroke();
                 }
             }
         }
         requestAnimationFrame(animate);
     }
+
+    const canvasObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (!animRunning) { animRunning = true; animate(); }
+            } else {
+                animRunning = false;
+            }
+        });
+    }, { threshold: 0 });
+    canvasObserver.observe(canvas);
+
     animate();
 })();
 
@@ -197,23 +244,6 @@ const statsObserver = new IntersectionObserver((entries) => {
 
 const heroStats = document.querySelector('.hero-stats');
 if (heroStats) statsObserver.observe(heroStats);
-
-const skillObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const fills = entry.target.querySelectorAll('.skill-fill');
-            fills.forEach((fill, i) => {
-                setTimeout(() => {
-                    fill.style.width = fill.dataset.width + '%';
-                }, i * 150);
-            });
-            skillObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-const skillsGrid = document.querySelector('.skills-grid');
-if (skillsGrid) skillObserver.observe(skillsGrid);
 
 const pricingObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -272,7 +302,6 @@ document.querySelectorAll('.pricing-card').forEach(card => pricingObserver.obser
     srvObserver.observe(slider);
 })();
 
-
 document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault();
@@ -286,12 +315,16 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 document.querySelectorAll('.pricing-card').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        card.style.transform = `translateY(-4px) perspective(600px) rotateX(${-y * 4}deg) rotateY(${x * 4}deg)`;
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const normX = x / rect.width - 0.5;
+        const normY = y / rect.height - 0.5;
+        card.style.transform = `translateY(-4px) perspective(600px) rotateX(${-normY * 4}deg) rotateY(${normX * 4}deg)`;
+        card.style.background = `radial-gradient(circle 200px at ${x}px ${y}px, rgba(244,114,182,.06), var(--glass))`;
     });
     card.addEventListener('mouseleave', () => {
         card.style.transform = '';
+        card.style.background = '';
     });
 });
 
@@ -300,7 +333,7 @@ document.querySelectorAll('.pricing-card').forEach(card => {
     bubbleContainer.className = 'bg-bubbles';
     document.body.appendChild(bubbleContainer);
 
-    for (let i = 0; i < 35; i++) {
+    for (let i = 0; i < 20; i++) {
         const bubble = document.createElement('div');
         bubble.className = 'bg-bubble';
         bubble.style.left = Math.random() * 100 + '%';
@@ -320,7 +353,7 @@ document.querySelectorAll('.pricing-card').forEach(card => {
         return `<svg viewBox="0 0 160 50" width="90" height="30"><defs><linearGradient id="fg${id}" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#d946ef"/><stop offset="40%" stop-color="#8B5CF6"/><stop offset="70%" stop-color="#7c3aed"/><stop offset="100%" stop-color="#fb923c"/></linearGradient></defs><path d="M28 38 C20 38 13 35 13 30 C13 25 18 23 25 22 C32 21 37 19 37 14 C37 9 32 6 25 6 C19 6 15 9 14 12 C13 14 11 12 11 10 C12 5 18 1 26 1 C35 1 42 5 42 12 C42 19 36 22 28 23 C21 24 17 26 17 30 C17 34 21 36 27 36 C32 36 35 34 36 32" fill="url(#fg${id})"/><path d="M48 10 L48 36 C48 40 50 41 53 40 L53 38 C51 39 50 38 50 36 L50 10 Z" fill="url(#fg${id})"/><rect x="44" y="16" width="14" height="3" rx="1" fill="url(#fg${id})"/><path d="M62 26 L76 26 C76 20 73 16 68 16 C63 16 60 20 60 26 C60 32 63 37 69 37 C73 37 75 35 76 33 L74 32 C73 34 71 35 69 35 C65 35 62 32 62 28 Z M62 24 C62 21 64 18 68 18 C72 18 74 21 74 24 Z" fill="url(#fg${id})"/><path d="M82 16 L91 34 L85 16 L83 16 Z" fill="url(#fg${id})"/><path d="M100 16 L91 34 C88 40 85 44 80 46 L82 44 C86 42 88 39 91 34 L98 16 Z" fill="url(#fg${id})"/><circle cx="108" cy="36" r="3" fill="#fb923c"/></svg>`;
     }
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < 12; i++) {
         const el = document.createElement('div');
         el.className = 'floating-logo';
         el.innerHTML = makeLogo(i);
@@ -332,64 +365,6 @@ document.querySelectorAll('.pricing-card').forEach(card => {
         container.appendChild(el);
     }
 })();
-
-window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const heroLeft = document.querySelector('.hero-left');
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroLeft && scrolled < window.innerHeight) {
-        heroLeft.style.transform = `translateY(${scrolled * 0.1}px)`;
-        heroVisual.style.transform = `translateY(${scrolled * 0.15}px)`;
-    }
-});
-
-document.querySelectorAll('.pricing-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        card.style.background = `radial-gradient(circle 200px at ${x}px ${y}px, rgba(244,114,182,.06), var(--glass))`;
-    });
-    card.addEventListener('mouseleave', () => {
-        card.style.background = '';
-    });
-});
-
-const realStatsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.querySelectorAll('.real-stat-number').forEach(el => {
-                const target = el.dataset.target;
-                if (target === '∞') {
-                    let count = 0;
-                    const interval = setInterval(() => {
-                        count += Math.floor(Math.random() * 50) + 10;
-                        el.textContent = count;
-                        if (count > 999) {
-                            el.textContent = '∞';
-                            clearInterval(interval);
-                        }
-                    }, 50);
-                } else {
-                    const num = parseInt(target);
-                    const duration = 2000;
-                    const start = performance.now();
-                    function update(now) {
-                        const progress = Math.min((now - start) / duration, 1);
-                        const eased = 1 - Math.pow(1 - progress, 3);
-                        el.textContent = Math.floor(num * eased).toLocaleString('fr-FR');
-                        if (progress < 1) requestAnimationFrame(update);
-                    }
-                    requestAnimationFrame(update);
-                }
-            });
-            realStatsObserver.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.3 });
-
-const realStats = document.querySelector('.real-stats');
-if (realStats) realStatsObserver.observe(realStats);
 
 (function() {
     const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
@@ -425,7 +400,6 @@ if (realStats) realStatsObserver.observe(realStats);
     });
 })();
 
-
 document.querySelectorAll('.faq-item').forEach(item => {
     item.addEventListener('click', () => {
         const wasActive = item.classList.contains('active');
@@ -433,39 +407,6 @@ document.querySelectorAll('.faq-item').forEach(item => {
         if (!wasActive) item.classList.add('active');
     });
 });
-
-const badgeTooltips = [
-    'Testé et approuvé',
-    'Level max atteint',
-    'Compétence débloquée',
-    'Achievement unlocked',
-    'GG no re',
-    'C\'est dans la poche',
-    '+10 XP',
-    'Skill tree complet'
-];
-document.querySelectorAll('.bonus-badge').forEach(badge => {
-    badge.addEventListener('mouseenter', () => {
-        const tip = badgeTooltips[Math.floor(Math.random() * badgeTooltips.length)];
-        badge.setAttribute('title', tip);
-    });
-});
-
-const backToTop = document.getElementById('back-to-top');
-const mobileCta = document.getElementById('mobile-cta');
-const contactSection = document.getElementById('contact');
-if (backToTop) {
-    window.addEventListener('scroll', () => {
-        backToTop.classList.toggle('visible', window.scrollY > 500);
-        if (mobileCta) {
-            const contactTop = contactSection ? contactSection.getBoundingClientRect().top : Infinity;
-            mobileCta.classList.toggle('visible', window.scrollY > 400 && contactTop > window.innerHeight * 0.5);
-        }
-    });
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-}
 
 document.querySelectorAll('[data-select]').forEach(btn => {
     btn.addEventListener('click', () => {
