@@ -303,6 +303,7 @@ if (compareBtn && compareContent) {
             if (entry.isIntersecting) {
                 cards.forEach((card, i) => {
                     setTimeout(() => card.classList.add('visible'), i * 150);
+                    setTimeout(() => card.classList.add('tilt-ready'), i * 150 + 700);
                 });
                 srvObserver.unobserve(entry.target);
             }
@@ -321,21 +322,23 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
     });
 });
 
-document.querySelectorAll('.pricing-card').forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const normX = x / rect.width - 0.5;
-        const normY = y / rect.height - 0.5;
-        card.style.transform = `translateY(-4px) perspective(600px) rotateX(${-normY * 4}deg) rotateY(${normX * 4}deg)`;
-        card.style.background = `radial-gradient(circle 200px at ${x}px ${y}px, rgba(244,114,182,.06), var(--glass))`;
+if (!('ontouchstart' in window)) {
+    document.querySelectorAll('.pricing-card').forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const normX = (x / rect.width - 0.5) * 2;
+            const normY = (y / rect.height - 0.5) * 2;
+            card.style.transform = `perspective(800px) rotateX(${-normY * 4}deg) rotateY(${normX * 4}deg) translateY(-6px) scale(1.02)`;
+            card.style.background = `radial-gradient(circle 250px at ${x}px ${y}px, rgba(244,114,182,.08), var(--glass))`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+            card.style.background = '';
+        });
     });
-    card.addEventListener('mouseleave', () => {
-        card.style.transform = '';
-        card.style.background = '';
-    });
-});
+}
 
 (function() {
     const bubbleContainer = document.createElement('div');
@@ -406,6 +409,55 @@ document.querySelectorAll('.pricing-card').forEach(card => {
         } else {
             index = 0;
         }
+    });
+})();
+
+(function() {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+
+    function addGlowDiv(card, cls) {
+        if (card.querySelector('.' + cls)) return card.querySelector('.' + cls);
+        const glow = document.createElement('div');
+        glow.className = cls;
+        card.insertBefore(glow, card.firstChild);
+        return glow;
+    }
+
+    function handleTilt(card, e, intensity, glowCls, glowColor) {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const normX = (x / rect.width - 0.5) * 2;
+        const normY = (y / rect.height - 0.5) * 2;
+        card.style.transform = `perspective(800px) rotateX(${-normY * intensity}deg) rotateY(${normX * intensity}deg) translateY(-6px) scale(1.02)`;
+        const glow = addGlowDiv(card, glowCls);
+        glow.style.background = `radial-gradient(circle 250px at ${x}px ${y}px, ${glowColor}, transparent)`;
+    }
+
+    function resetTilt(card) {
+        card.style.transform = '';
+    }
+
+    document.querySelectorAll('.srv-card').forEach(card => {
+        card.addEventListener('mousemove', e => {
+            if (!card.classList.contains('tilt-ready')) return;
+            handleTilt(card, e, 5, 'srv-glow', 'rgba(139,92,246,.12)');
+        });
+        card.addEventListener('mouseleave', () => {
+            if (!card.classList.contains('tilt-ready')) return;
+            card.style.transform = 'translateY(0) rotate(0deg)';
+        });
+    });
+
+    document.querySelectorAll('.project-card-big').forEach(card => {
+        card.addEventListener('mousemove', e => handleTilt(card, e, 4, 'card-glow', 'rgba(244,114,182,.1)'));
+        card.addEventListener('mouseleave', () => resetTilt(card));
+    });
+
+    document.querySelectorAll('.testimonial-card').forEach(card => {
+        card.addEventListener('mousemove', e => handleTilt(card, e, 3, 'card-glow', 'rgba(139,92,246,.08)'));
+        card.addEventListener('mouseleave', () => resetTilt(card));
     });
 })();
 

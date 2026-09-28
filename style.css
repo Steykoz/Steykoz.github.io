@@ -570,7 +570,7 @@ img { max-width: 100%; display: block; }
     backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
-    transition: all .4s cubic-bezier(.4,0,.2,1);
+    transition: all .6s cubic-bezier(.4,0,.2,1);
     position: relative;
     flex-shrink: 0;
     opacity: 0;
@@ -580,6 +580,9 @@ img { max-width: 100%; display: block; }
 .srv-card.visible {
     opacity: 1;
     transform: translateY(0) rotate(0deg);
+}
+.srv-card.tilt-ready {
+    transition: box-shadow .3s, border-color .3s;
 }
 .srv-card::before {
     content: '';
@@ -595,10 +598,18 @@ img { max-width: 100%; display: block; }
     pointer-events: none;
 }
 .srv-card:hover {
-    transform: translateY(-10px) rotate(-1deg) scale(1.02);
     box-shadow: 0 30px 60px rgba(0,0,0,.5), 0 0 40px rgba(139,92,246,.06);
     border-color: rgba(255,255,255,.15);
 }
+.srv-card .srv-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+}
+.srv-card:hover .srv-glow { opacity: 1; }
 .srv-icon {
     margin-bottom: 20px;
     width: 60px;
@@ -670,12 +681,22 @@ img { max-width: 100%; display: block; }
     border-radius: var(--radius);
     overflow: hidden;
     border: 1px solid var(--border);
-    transition: all .3s;
+    transition: box-shadow .3s, border-color .3s;
     box-shadow: 0 4px 30px rgba(0,0,0,.2);
     background: var(--glass);
     backdrop-filter: blur(12px);
 }
-.project-card-big:hover { transform: translateY(-4px); box-shadow: 0 20px 60px rgba(139,92,246,.2); }
+.project-card-big:hover { box-shadow: 0 20px 60px rgba(139,92,246,.2); }
+.project-card-big .card-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+    z-index: 1;
+}
+.project-card-big:hover .card-glow { opacity: 1; }
 .project-img { height: 300px; }
 .project-overlay {
     position: absolute;
@@ -722,7 +743,21 @@ img { max-width: 100%; display: block; }
     padding: 36px;
     backdrop-filter: blur(12px);
     position: relative;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
 }
+.testimonial-card:hover {
+    border-color: rgba(255,255,255,.12);
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+.testimonial-card .card-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity .3s;
+}
+.testimonial-card:hover .card-glow { opacity: 1; }
 .testimonial-quote {
     position: absolute;
     top: 16px;
