@@ -1,6 +1,11 @@
 window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if (!loader) return;
+    if (sessionStorage.getItem('loaderShown')) {
+        loader.classList.add('hidden');
+        return;
+    }
+    sessionStorage.setItem('loaderShown', '1');
     const lines = document.querySelectorAll('.terminal-line');
     const totalDelay = (lines.length - 1) * 150 + 100 + 300;
     setTimeout(() => {
