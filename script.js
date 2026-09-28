@@ -798,3 +798,4 @@ if (contactForm) contactForm.addEventListener('submit', async (e) => {
         avatar.style.filter = '';
     });
 })();
+
