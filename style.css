@@ -1044,6 +1044,12 @@ img { max-width: 100%; display: block; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 .form-group { display: flex; flex-direction: column; gap: 6px; }
 .form-group label { font-size: .8rem; font-weight: 500; color: var(--text2); }
+.form-group {
+    position: relative;
+}
+.form-group label {
+    transition: color .3s, transform .3s, font-size .3s;
+}
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -1054,9 +1060,27 @@ img { max-width: 100%; display: block; }
     font-family: var(--font);
     font-size: .9rem;
     color: var(--text);
-    transition: border-color .2s, box-shadow .2s;
+    transition: border-color .3s, box-shadow .3s, background .3s;
     outline: none;
     resize: vertical;
+    position: relative;
+}
+.form-group .input-line {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+    border-radius: 99px;
+    transition: width .4s cubic-bezier(.4,0,.2,1), left .4s cubic-bezier(.4,0,.2,1);
+    pointer-events: none;
+}
+.form-group input:focus ~ .input-line,
+.form-group select:focus ~ .input-line,
+.form-group textarea:focus ~ .input-line {
+    width: 100%;
+    left: 0;
 }
 .form-group input:focus,
 .form-group select:focus,
@@ -1422,7 +1446,12 @@ img { max-width: 100%; display: block; }
     max-width: 800px;
     margin: 0 auto;
 }
-.about-avatar { display: flex; align-items: center; justify-content: center; }
+.about-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 600px;
+}
 .about-avatar-img {
     width: 200px;
     height: 200px;
@@ -1430,10 +1459,7 @@ img { max-width: 100%; display: block; }
     object-fit: cover;
     filter: drop-shadow(0 8px 32px rgba(139,92,246,.3));
     animation: aboutPulse 4s ease-in-out infinite;
-    transition: transform .3s;
-}
-.about-avatar-img:hover {
-    transform: scale(1.05);
+    transition: filter .3s;
 }
 @keyframes aboutPulse {
     0%, 100% { filter: drop-shadow(0 8px 32px rgba(139,92,246,.3)); }
@@ -1671,4 +1697,15 @@ img { max-width: 100%; display: block; }
 .process-step:nth-child(2) { --step-glow: rgba(244,114,182,.4); }
 .process-step:nth-child(3) { --step-glow: rgba(251,146,60,.4); }
 .process-step:nth-child(4) { --step-glow: rgba(52,211,153,.4); }
+
+body.page-leaving {
+    opacity: 0;
+    transform: scale(0.99);
+    transition: opacity .3s, transform .3s;
+}
+body {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity .3s, transform .3s;
+}
 

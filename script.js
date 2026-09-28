@@ -759,3 +759,42 @@ if (contactForm) contactForm.addEventListener('submit', async (e) => {
         btn.disabled = false;
     }, 3000);
 });
+
+(function() {
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('http') || href.startsWith('mailto')) return;
+        link.addEventListener('click', e => {
+            e.preventDefault();
+            document.body.classList.add('page-leaving');
+            setTimeout(() => { window.location.href = href; }, 300);
+        });
+    });
+})();
+
+(function() {
+    document.querySelectorAll('.form-group input, .form-group textarea, .form-group select').forEach(input => {
+        const line = document.createElement('div');
+        line.className = 'input-line';
+        input.parentElement.appendChild(line);
+    });
+})();
+
+(function() {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) return;
+    const avatar = document.querySelector('.about-avatar-img');
+    if (!avatar) return;
+    const parent = avatar.parentElement;
+    parent.addEventListener('mousemove', e => {
+        const rect = parent.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        avatar.style.transform = `rotateX(${-y * 20}deg) rotateY(${x * 20}deg) scale(1.08)`;
+        avatar.style.filter = `drop-shadow(${-x * 20}px ${-y * 20}px 40px rgba(139,92,246,.4))`;
+    });
+    parent.addEventListener('mouseleave', () => {
+        avatar.style.transform = '';
+        avatar.style.filter = '';
+    });
+})();
