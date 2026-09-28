@@ -107,29 +107,82 @@ if (typedEl) setTimeout(type, 1000);
 (function() {
     const container = document.getElementById('hero-code-body');
     if (!container) return;
+
     const lines = [
-        '<span class="code-keyword">const</span> <span class="code-var">stey</span> = {',
-        '  <span class="code-prop">mood</span>: <span class="code-string">\'cafféiné\'</span>,',
-        '  <span class="code-prop">dispo</span>: <span class="code-bool">true</span>,',
-        '  <span class="code-prop">délai</span>: <span class="code-string">\'rapide\'</span>,',
-        '  <span class="code-prop">prix</span>: <span class="code-string">\'honnête\'</span>,',
-        '  <span class="code-prop">café</span>: <span class="code-var">Infinity</span>,',
-        '};',
-        '',
-        '<span class="code-comment">// si vous lisez ça, vous êtes au bon endroit</span>',
-        '<span class="code-keyword">export default</span> stey;'
+        { text: 'const stey = {', tokens: [{t:'const',c:'code-keyword'},{t:' stey = {'}] },
+        { text: "  mood: 'cafféiné',", tokens: [{t:'  '},{t:'mood',c:'code-prop'},{t:': '},{t:"'cafféiné'",c:'code-string'},{t:','}], pause: 150 },
+        { text: '  dispo: true,', tokens: [{t:'  '},{t:'dispo',c:'code-prop'},{t:': '},{t:'true',c:'code-bool'},{t:','}] },
+        { text: "  délai: 'rapide',", tokens: [{t:'  '},{t:'délai',c:'code-prop'},{t:': '},{t:"'rapide'",c:'code-string'},{t:','}] },
+        { text: "  prix: 'honnête',", tokens: [{t:'  '},{t:'prix',c:'code-prop'},{t:': '},{t:"'honnête'",c:'code-string'},{t:','}], pause: 100 },
+        { text: '  café: Infinity,', tokens: [{t:'  '},{t:'café',c:'code-prop'},{t:': '},{t:'Infinity',c:'code-var'},{t:','}] },
+        { text: '};', tokens: [{t:'};'}], pause: 250 },
+        { text: '', tokens: [] },
+        { text: '// si vous lisez ça, vous êtes au bon endroit', tokens: [{t:'// si vous lisez ça, vous êtes au bon endroit',c:'code-comment'}], pause: 100 },
+        { text: 'export default stey;', tokens: [{t:'export default',c:'code-keyword'},{t:' stey;'}] }
     ];
-    let lineIdx = 0;
-    function typeLine() {
-        if (lineIdx >= lines.length) return;
-        const span = document.createElement('span');
-        span.className = 'code-line code-line-typing';
-        span.innerHTML = lines[lineIdx] || '&nbsp;';
-        container.appendChild(span);
-        lineIdx++;
-        setTimeout(typeLine, 120 + Math.random() * 80);
+
+    let lineIdx = 0, tokenIdx = 0, charIdx = 0;
+    let currentLine = null;
+    let currentSpan = null;
+    const cursorEl = document.createElement('span');
+    cursorEl.className = 'code-cursor';
+    cursorEl.textContent = '|';
+
+    function newLine() {
+        currentLine = document.createElement('span');
+        currentLine.className = 'code-line';
+        container.appendChild(currentLine);
+        tokenIdx = 0;
+        charIdx = 0;
+        currentSpan = null;
     }
-    setTimeout(typeLine, 2000);
+
+    function typeChar() {
+        if (lineIdx >= lines.length) {
+            cursorEl.remove();
+            return;
+        }
+        const line = lines[lineIdx];
+        if (!line.tokens.length) {
+            newLine();
+            currentLine.innerHTML = '&nbsp;';
+            lineIdx++;
+            currentLine.appendChild(cursorEl);
+            setTimeout(typeChar, 150);
+            return;
+        }
+        if (!currentLine) newLine();
+
+        const token = line.tokens[tokenIdx];
+        if (!currentSpan) {
+            currentSpan = document.createElement('span');
+            if (token.c) currentSpan.className = token.c;
+            currentLine.appendChild(currentSpan);
+        }
+
+        cursorEl.remove();
+        currentSpan.textContent += token.t[charIdx];
+        charIdx++;
+
+        currentLine.appendChild(cursorEl);
+
+        if (charIdx >= token.t.length) {
+            tokenIdx++;
+            charIdx = 0;
+            currentSpan = null;
+            if (tokenIdx >= line.tokens.length) {
+                lineIdx++;
+                currentLine = null;
+                const pause = line.pause || 60;
+                setTimeout(typeChar, pause + Math.random() * 40);
+                return;
+            }
+        }
+        const speed = 18 + Math.random() * 18;
+        setTimeout(typeChar, speed);
+    }
+
+    setTimeout(typeChar, 2200);
 })();
 
 (function() {
@@ -471,6 +524,27 @@ if (!('ontouchstart' in window)) {
             if (img) img.style.transform = '';
         });
     });
+
+    const heroCode = document.querySelector('.hero-code');
+    if (heroCode) {
+        heroCode.addEventListener('mousemove', e => {
+            const rect = heroCode.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const normX = (x / rect.width - 0.5) * 2;
+            const normY = (y / rect.height - 0.5) * 2;
+            heroCode.style.animation = 'none';
+            heroCode.style.transform = `perspective(800px) rotateX(${-normY * 6}deg) rotateY(${normX * 6}deg) scale(1.03)`;
+            heroCode.style.boxShadow = `0 25px 70px rgba(0,0,0,.25), 0 0 40px rgba(139,92,246,.15)`;
+            heroCode.style.borderColor = 'rgba(139,92,246,.2)';
+        });
+        heroCode.addEventListener('mouseleave', () => {
+            heroCode.style.transform = '';
+            heroCode.style.boxShadow = '';
+            heroCode.style.borderColor = '';
+            heroCode.style.animation = '';
+        });
+    }
 
     document.querySelectorAll('.testimonial-card').forEach(card => {
         card.addEventListener('mousemove', e => handleTilt(card, e, 3, 'card-glow', 'rgba(139,92,246,.08)'));
