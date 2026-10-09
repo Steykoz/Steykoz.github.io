@@ -387,18 +387,6 @@ section{position:relative}
 html.no-intro .loader{display:none}
 html.loading .hero h1 .w,html.loading .hero .lead,html.loading .hero__ctas,html.loading .hero__proof,html.loading .stage{animation-play-state:paused}
 
-/* ===== custom cursor ===== */
-.cur,.cur-ring{position:fixed;left:0;top:0;pointer-events:none;z-index:400;border-radius:50%;opacity:0;transition:opacity .3s}
-.cur{width:6px;height:6px;margin:-3px 0 0 -3px;background:var(--accent)}
-.cur-ring{width:38px;height:38px;margin:-19px 0 0 -19px;border:1px solid rgba(244,241,234,.35);display:grid;place-items:center;transition:opacity .3s,width .35s var(--ease),height .35s var(--ease),margin .35s var(--ease),background .35s,border-color .35s}
-.cur-ring span{font-size:11px;font-weight:600;letter-spacing:.06em;color:var(--bg);opacity:0;transition:opacity .2s}
-body.has-cursor .cur,body.has-cursor .cur-ring{opacity:1}
-body.cur-link .cur-ring{width:64px;height:64px;margin:-32px 0 0 -32px;border-color:rgba(var(--accent-rgb),.6);background:rgba(var(--accent-rgb),.08)}
-body.cur-drag .cur-ring{width:84px;height:84px;margin:-42px 0 0 -42px;background:var(--accent);border-color:var(--accent)}
-body.cur-drag .cur-ring span{opacity:1}
-body.cur-drag .cur{opacity:0}
-@media (hover:hover) and (pointer:fine){body.has-cursor,body.has-cursor a,body.has-cursor button,body.has-cursor .stage,body.has-cursor .hs__vp,body.has-cursor .chip{cursor:none}}
-
 /* ===== scroll progress ===== */
 .sprog{position:fixed;left:0;top:0;height:2px;width:100%;z-index:150;background:var(--accent);transform-origin:left;transform:scaleX(0)}
 
@@ -596,7 +584,6 @@ body.cur-drag .cur{opacity:0}
 <script>try{if(sessionStorage.getItem("sk-intro")||matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("no-intro");else document.documentElement.classList.add("loading")}catch(e){document.documentElement.classList.add("no-intro")}</script>
 <div class="loader" id="loader" aria-hidden="true"><div class="loader__n"><b id="loadN">0</b><span>%</span></div><div class="loader__bar"><i id="loadBar"></i></div></div>
 <div class="sprog" id="sprog" aria-hidden="true"></div>
-<div class="cur" id="cur" aria-hidden="true"></div><div class="cur-ring" id="curRing" aria-hidden="true"><span id="curTxt">Glisser</span></div>
 <a href="#main" class="skip">Aller au contenu</a>
 
 <header class="nav" id="nav">
@@ -947,7 +934,6 @@ body.cur-drag .cur{opacity:0}
         </ul>
       </div>
     </div>
-    <div class="footer__word" id="fword" aria-hidden="true"><span>S</span><span>t</span><span>e</span><span>y</span><span>k</span><span>o</span><span>z</span></div>
     <div class="footer__bot">
       <span>© <span id="y">2026</span> Zokoa. Tous droits réservés.</span>
       <span><a href="mentions-legales.html">Mentions légales</a> · <a href="politique-confidentialite.html">Confidentialité</a></span>
@@ -981,7 +967,6 @@ if(!RM)$$('.h2').forEach(h=>{h.classList.add('split');splitWords(h,(t,i)=>{const
 
 /* ---------- reveal ---------- */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);if(e.target.dataset.count!==undefined)count(e.target)}}),{threshold:.14,rootMargin:'0px 0px -5% 0px'});
-$$('#fword').forEach(el=>io.observe(el));
 $$('.stag').forEach(el=>[...el.children].forEach((c,i)=>{c.style.transitionDelay=(i*.07)+'s'}));
 $$('.chips label').forEach((l,i)=>{l.style.transitionDelay=(.25+i*.05)+'s'});
 $$('.rv,.clip,.split,[data-count]').forEach(el=>{if(el.classList.contains('rv')){const sib=[...el.parentElement.children].filter(c=>c.classList.contains('rv'));const i=sib.indexOf(el);if(i>0)el.style.transitionDelay=Math.min(i,6)*.07+'s'}io.observe(el)});
@@ -992,21 +977,6 @@ const nav=$('#nav'),burger=$('#burger'),mm=$('#mmenu');
 const setMenu=o=>{burger.setAttribute('aria-expanded',o);mm.classList.toggle('open',o);mm.setAttribute('aria-hidden',!o);document.body.style.overflow=o?'hidden':''};
 burger.addEventListener('click',()=>setMenu(burger.getAttribute('aria-expanded')!=='true'));
 mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-
-/* ---------- custom cursor ---------- */
-if(FINE&&!RM){
-  const c=$('#cur'),r=$('#curRing'),txt=$('#curTxt');let mx=-100,my=-100,rx=-100,ry=-100;
-  document.body.classList.add('has-cursor');
-  addEventListener('pointermove',e=>{mx=e.clientX;my=e.clientY;c.style.transform=`translate(${mx}px,${my}px)`},{passive:true});
-  document.addEventListener('pointerleave',()=>document.body.classList.remove('has-cursor'));
-  document.addEventListener('pointerenter',()=>document.body.classList.add('has-cursor'));
-  (function loop(){rx=lerp(rx,mx,.18);ry=lerp(ry,my,.18);r.style.transform=`translate(${rx}px,${ry}px)`;requestAnimationFrame(loop)})();
-  document.addEventListener('pointerover',e=>{
-    const d=e.target.closest('.stage,.hs__vp,.chip');const l=e.target.closest('a,button,summary,label,input,select,textarea');
-    document.body.classList.toggle('cur-drag',!!d&&!l);document.body.classList.toggle('cur-link',!!l);
-    if(d)txt.textContent=d.classList.contains('hs__vp')?'Glisser':'Pivoter';
-  });
-}
 
 /* ---------- magnetic + fill origin ---------- */
 $$('.btn--primary').forEach(b=>b.addEventListener('pointerenter',e=>{const r=b.getBoundingClientRect();b.style.setProperty('--mx',e.clientX-r.left+'px');b.style.setProperty('--my',e.clientY-r.top+'px')}));
@@ -1116,9 +1086,6 @@ if(FINE)hero.addEventListener('pointermove',e=>{const r=hero.getBoundingClientRe
   addEventListener('scroll',()=>{const d=scrollY-lastY;lastY=scrollY;if(d)dir=d>0?1:-1;boost=Math.min(2.5,boost+Math.abs(d)*.015)},{passive:true});
   (function f(){requestAnimationFrame(f);if(!vis)return;const half=t.scrollWidth/2;x-=(.35+boost)*dir;boost*=.9;if(x<=-half)x+=half;if(x>0)x-=half;t.style.transform=`translate3d(${x}px,0,0)`})();
 })();
-
-/* ---------- footer spotlight ---------- */
-const fw=$('#fword');if(FINE)fw.addEventListener('pointermove',e=>{const r=fw.getBoundingClientRect();fw.style.setProperty('--fx',e.clientX-r.left+'px');fw.style.setProperty('--fy',e.clientY-r.top+'px')});
 
 /* ---------- smooth scroll (Lenis, desktop) ---------- */
 let lenis=null;

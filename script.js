@@ -558,6 +558,7 @@ if (!('ontouchstart' in window)) {
 })();
 
 (function() {
+    return; // curseur personnalisé désactivé
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
